@@ -1,0 +1,149 @@
+name: Deploy iOS to TestFlight
+
+# Manual-only. Requires the following repository secrets to be configured first:
+#   APP_STORE_CONNECT_API_KEY_ID         - "ABCD1234EF" (10 chars)
+#   APP_STORE_CONNECT_API_ISSUER_ID      - UUID
+#   APP_STORE_CONNECT_API_PRIVATE_KEY    - full .p8 contents (multi-line)
+#   APPLE_DISTRIBUTION_CERTIFICATE_P12   - base64-encoded .p12 file
+#   APPLE_DISTRIBUTION_CERTIFICATE_PASS  - the .p12 password
+#   APPLE_PROVISIONING_PROFILE           - base64-encoded .mobileprovision
+#   APPLE_TEAM_ID                        - 10-char team id
+#   APPLE_KEYCHAIN_PASSWORD              - any random string for the temp keychain
+#
+# Until those are present, this workflow is gated behind workflow_dispatch and
+# the first job will fail-fast with a clear message rather than producing a
+# half-archived build.
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_number:
+        description: 'CFBundleVersion to stamp (e.g. 42). Leave blank to use run number.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    name: Preflight (verify secrets are configured)
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        env:
+          KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          P8: ${{ secrets.APP_STORE_CONNECT_API_PRIVATE_KEY }}
+          P12: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_P12 }}
+          P12_PASS: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_PASS }}
+          PROFILE: ${{ secrets.APPLE_PROVISIONING_PROFILE }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          KC_PASS: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
+        run: |
+          missing=0
+          for var in KEY_ID ISSUER_ID P8 P12 P12_PASS PROFILE TEAM_ID KC_PASS; do
+            if [ -z "${!var}" ]; then
+              echo "::error::Required secret $var is not configured"
+              missing=$((missing+1))
+            else
+              echo "OK: $var present"
+            fi
+          done
+          if [ "$missing" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+  archive-and-upload:
+    name: Archive and Upload to TestFlight
+    needs: preflight
+    if: needs.preflight.outputs.ready == 'true'
+    runs-on: macos-15
+    timeout-minutes: 60
+    env:
+      SCHEME: "Psychosocial  Analytics"
+      PROJECT: "Psychosocial  Analytics.xcodeproj"
+      BUILD_NUMBER: ${{ inputs.build_number || github.run_number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort | tail -1)/Contents/Developer"
+
+      - name: Import signing certificate
+        env:
+          CERT_B64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_P12 }}
+          CERT_PASS: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_PASS }}
+          KC_PASS: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
+        run: |
+          KC=$RUNNER_TEMP/build.keychain-db
+          security create-keychain -p "$KC_PASS" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "$KC_PASS" "$KC"
+          echo "$CERT_B64" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security import "$RUNNER_TEMP/cert.p12" -k "$KC" -P "$CERT_PASS" -T /usr/bin/codesign
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KC_PASS" "$KC"
+
+      - name: Install provisioning profile
+        env:
+          PROFILE_B64: ${{ secrets.APPLE_PROVISIONING_PROFILE }}
+        run: |
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          echo "$PROFILE_B64" | base64 --decode > "$HOME/Library/MobileDevice/Provisioning Profiles/profile.mobileprovision"
+
+      - name: Build and archive
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath "$RUNNER_TEMP/PSA.xcarchive" \
+            CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
+            DEVELOPMENT_TEAM=$TEAM_ID \
+            CODE_SIGN_STYLE=Manual \
+            | tee archive.log
+
+      - name: Export IPA
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>${{ secrets.APPLE_TEAM_ID }}</string>
+            <key>uploadSymbols</key><true/>
+            <key>signingStyle</key><string>manual</string>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/PSA.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+
+      - name: Upload to TestFlight
+        env:
+          KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          P8: ${{ secrets.APP_STORE_CONNECT_API_PRIVATE_KEY }}
+        run: |
+          mkdir -p "$HOME/.appstoreconnect/private_keys"
+          printf '%s' "$P8" > "$HOME/.appstoreconnect/private_keys/AuthKey_${KEY_ID}.p8"
+          IPA=$(ls "$RUNNER_TEMP/export"/*.ipa | head -1)
+          xcrun altool --upload-app -f "$IPA" -t ios \
+            --apiKey "$KEY_ID" --apiIssuer "$ISSUER_ID"

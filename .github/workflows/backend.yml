@@ -1,0 +1,72 @@
+name: Backend Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-check:
+    name: Backend Check (Python)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend
+
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install ruff==0.6.9
+
+      - name: Compile-check all Python sources
+        run: |
+          python -m compileall -q app
+
+      - name: Lint (ruff)
+        continue-on-error: true
+        run: |
+          ruff check app --output-format=github
+
+      - name: Format check (ruff format)
+        continue-on-error: true
+        run: |
+          ruff format --check app
+
+      - name: Import smoke-test
+        env:
+          PSA_AI_API_KEY: dummy-for-import-test
+          PSA_AI_BASE_URL: https://example.invalid/v1
+        run: |
+          python -c "from app.main import app; print('FastAPI app import OK:', app.title)"
