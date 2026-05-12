@@ -8,19 +8,51 @@
 import SwiftUI
 import SwiftData
 import UIKit
+import OSLog
 
 @main
 struct Psychosocial__AnalyticsApp: App {
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? "wcs.Psychosocial--Analytics",
+        category: "Storage"
+    )
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             AssessmentDraft.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let userDefaults = UserDefaults.standard
+        let cloudKitSyncEnabled = SyncBackupPreferences.requestedCloudKitSyncEnabled(userDefaults: userDefaults)
+
+        func makeContainer(cloudKitDatabase: ModelConfiguration.CloudKitDatabase) throws -> ModelContainer {
+            let modelConfiguration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: cloudKitDatabase
+            )
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        }
+
+        if cloudKitSyncEnabled {
+            do {
+                let container = try makeContainer(cloudKitDatabase: .automatic)
+                SyncBackupPreferences.recordCloudKitStartupIssue(nil, userDefaults: userDefaults)
+                return container
+            } catch {
+                let issue = error.localizedDescription
+                Self.logger.error(
+                    "CloudKit-backed SwiftData unavailable at launch: \(issue, privacy: .public). Falling back to local storage."
+                )
+                SyncBackupPreferences.recordCloudKitStartupIssue(issue, userDefaults: userDefaults)
+            }
+        } else {
+            SyncBackupPreferences.recordCloudKitStartupIssue(nil, userDefaults: userDefaults)
+        }
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try makeContainer(cloudKitDatabase: .none)
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("Could not create local ModelContainer: \(error)")
         }
     }()
 

@@ -8,7 +8,7 @@ import SwiftData
 
 @Model
 final class AssessmentDraft {
-    @Attribute(.unique) var id: UUID
+    var id: UUID
     var clientName: String
     var statusRaw: String
     var createdAt: Date

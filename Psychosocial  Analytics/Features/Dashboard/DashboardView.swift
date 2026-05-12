@@ -8,21 +8,51 @@ import SwiftData
 
 struct DashboardView: View {
     @Query(sort: \AssessmentDraft.updatedAt, order: .reverse) private var drafts: [AssessmentDraft]
+    @AppStorage(SyncBackupPreferences.cloudKitSyncEnabledKey) private var cloudKitSyncEnabled = true
+    @AppStorage(SyncBackupPreferences.iCloudBackupEnabledKey) private var iCloudBackupEnabled = true
+    @AppStorage(SyncBackupPreferences.cloudKitStartupIssueKey) private var cloudKitStartupIssue = ""
+    let onSelectTab: (AppTab) -> Void
+
+    init(onSelectTab: @escaping (AppTab) -> Void = { _ in }) {
+        self.onSelectTab = onSelectTab
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    navigationRail
                     summaryRow
                     flaggedCard
                     completionCard
                     aiQueueCard
+                    cloudContinuityCard
                 }
                 .padding(20)
             }
             .background(Color.pearlBackground.ignoresSafeArea())
             .navigationTitle("Dashboard")
         }
+    }
+
+    private var navigationRail: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Quick Navigation")
+                .font(.headline)
+
+            HStack(spacing: 10) {
+                quickActionButton(title: "New Assessment", systemImage: "plus.circle.fill", tab: .assessments)
+                quickActionButton(title: "Reports", systemImage: "signature", tab: .reports)
+            }
+
+            HStack(spacing: 10) {
+                quickActionButton(title: "Analytics", systemImage: "chart.xyaxis.line", tab: .analytics)
+                quickActionButton(title: "Settings", systemImage: "gearshape.fill", tab: .settings)
+            }
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     private var summaryRow: some View {
@@ -69,6 +99,50 @@ struct DashboardView: View {
                 .font(.callout)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    private var cloudContinuityCard: some View {
+        DashboardCard(title: "Cloud Continuity", systemImage: "icloud.and.arrow.up.fill", tint: .emeraldAction) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(SyncBackupPreferences.cloudStatus(
+                    cloudKitEnabled: cloudKitSyncEnabled,
+                    iCloudBackupEnabled: iCloudBackupEnabled,
+                    startupIssue: startupIssue
+                ))
+                .font(.callout)
+                .foregroundStyle(.secondary)
+
+                if let startupIssue {
+                    Text("Startup note: \(startupIssue)")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                }
+
+                Button {
+                    onSelectTab(.settings)
+                } label: {
+                    Label("Open Sync Settings", systemImage: "gearshape.2.fill")
+                }
+                .buttonStyle(.bordered)
+                .tint(.emeraldAction)
+            }
+        }
+    }
+
+    private func quickActionButton(title: String, systemImage: String, tab: AppTab) -> some View {
+        Button {
+            onSelectTab(tab)
+        } label: {
+            Label(title, systemImage: systemImage)
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.emeraldAction)
+    }
+
+    private var startupIssue: String? {
+        cloudKitStartupIssue.isEmpty ? nil : cloudKitStartupIssue
     }
 }
 
