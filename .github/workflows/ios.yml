@@ -50,23 +50,13 @@ jobs:
           sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort | tail -1)/Contents/Developer"
           xcodebuild -version
 
-      - name: Resolve build destination
-        id: destination
-        run: |
-          DEST=$(xcrun simctl list devices available | awk '/iPhone 1[5-9] Pro/ && /\(Shutdown\)/ {match($0,/\(([0-9A-F-]+)\)/,a); if(a[1]){print a[1]; exit}}')
-          if [ -z "$DEST" ]; then
-            DEST=$(xcrun simctl list devices available | awk '/iPhone/ && /\(Shutdown\)/ {match($0,/\(([0-9A-F-]+)\)/,a); if(a[1]){print a[1]; exit}}')
-          fi
-          echo "Using simulator UDID: $DEST"
-          echo "udid=$DEST" >> "$GITHUB_OUTPUT"
-
       - name: Build
         run: |
           set -o pipefail
           xcodebuild build \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
-            -destination "platform=iOS Simulator,id=${{ steps.destination.outputs.udid }}" \
+            -destination "generic/platform=iOS Simulator" \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             COMPILER_INDEX_STORE_ENABLE=NO \
