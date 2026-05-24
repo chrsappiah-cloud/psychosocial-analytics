@@ -1,0 +1,44 @@
+# Xcode
+DerivedData/
+**/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# XcodeGen / local build
+build/
+*.xcresult
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+*.iml
+
+# Secrets — never commit
+.env
+.env.*
+*.pem
+Secrets.plist
+Config/Secrets.swift
+
+# Cursor / local
+.cursor/
+
+# Test artifacts (keep scripts, ignore outputs)
+TestResults.xcresult/
+build/
+Distribution/screenshots/*.png
+Distribution/screenshots/*.jpg

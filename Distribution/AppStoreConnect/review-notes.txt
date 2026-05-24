@@ -1,0 +1,11 @@
+Psychosocial Analytics — App Review Notes (v1.0.0)
+
+- No demo login required. The app runs with sample caseload data offline.
+- Upload tab supports manual files, photo/video library, pasted text, and public HTTPS URL imports.
+- New Client segment creates client records stored locally and synced when Supabase credentials are configured.
+- AI draft generation on the Assessment screen returns simulated clinical narrative text for workflow validation; no PHI is sent to third-party AI in this build.
+- Administrator and environment controls appear only in Debug builds or after using in-app administrator promotion (Settings).
+- Subscriptions use StoreKit 2 (Professional / Enterprise). Restore Purchases is available in Settings.
+- Export compliance: standard HTTPS only (ITSAppUsesNonExemptEncryption = false).
+
+Contact: support@psychosocialanalytics.com

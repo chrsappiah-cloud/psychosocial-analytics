@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C8C45429E7D3B2245064B3F /* AIGenerationIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */; };
+		0DA2B17FFCEB0B186761A83B /* PsychosocialAnalyticsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */; };
+		1017FA3AE0404CC1AC22AE28 /* EndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */; };
+		1BD24F3D40364D9E5F7378BA /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0257CBBA4702DE2AC0CE9A6 /* TestSupport.swift */; };
+		3AFCF4391E6AF16AD2B95772 /* PsychosocialAnalyticsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA75354063C99852E8D82D8 /* PsychosocialAnalyticsApp.swift */; };
+		3B9E3D6929DF4FAFC6DDE6E6 /* PsychosocialAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D1F414EBC1D0E8227A01D2 /* PsychosocialAnalyticsTests.swift */; };
+		41FF72152808F65C50C11EC8 /* BackendServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664317B97B712F7DB6B904A6 /* BackendServiceTests.swift */; };
+		50329B413088A60AE4FB865E /* UploadAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665E5470A71E4655E017DE4 /* UploadAccessTests.swift */; };
+		6021FAD004C868ABBC99A695 /* AIGenerationEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D213C8573CCE558948231A /* AIGenerationEndToEndTests.swift */; };
+		7002162FAD3A8F23BEF56CB4 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98522E3530F3278A5AC938A /* IntegrationTests.swift */; };
+		78D4EE26BCC79EF8B50459A9 /* GenAIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C091E2D79B1EF5F31239F1 /* GenAIServiceTests.swift */; };
+		80C7D99F04FDE4A40F8462A5 /* AssessmentViewModelAITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */; };
+		8400BF68B117250281F9B9CE /* PsychosocialAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E2EAEDD5E34444091222528B /* PsychosocialAnalytics */; };
+		9DFBF18048F18450F41431FC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */; };
+		B9D5CF955DE81D25AD83E15E /* PsychosocialAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 159207885FEF5FD64FDA0714 /* PsychosocialAnalytics */; };
+		BFC30C4C7D29820E41A7E5E2 /* AIGenerationBackendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C4BE60057C3203FCD90D0 /* AIGenerationBackendTests.swift */; };
+		C841608D985C45D14C2A161F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715A92D883B0067869D4DEC3 /* Assets.xcassets */; };
+		CB0BACDAF0FE407FE6DE1EB9 /* AIGenerationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */; };
+		D445F30E6857C782D6D8048F /* MiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10C3C3E185662007477BC42 /* MiddlewareTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A866547470D86A2BAFFF5A40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD001AC557A829E492ED7AC0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 482D26356D1EF701C016A4F8;
+			remoteInfo = PsychosocialAnalyticsApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PsychosocialAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B21878CE41E0B14DE8E530 /* Psychosocial Analytics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Psychosocial Analytics"; path = .; sourceTree = SOURCE_ROOT; };
+		32C091E2D79B1EF5F31239F1 /* GenAIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenAIServiceTests.swift; sourceTree = "<group>"; };
+		5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModelAITests.swift; sourceTree = "<group>"; };
+		664317B97B712F7DB6B904A6 /* BackendServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
+		67D213C8573CCE558948231A /* AIGenerationEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationEndToEndTests.swift; sourceTree = "<group>"; };
+		6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationIntegrationTests.swift; sourceTree = "<group>"; };
+		715A92D883B0067869D4DEC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PsychosocialAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8665E5470A71E4655E017DE4 /* UploadAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadAccessTests.swift; sourceTree = "<group>"; };
+		9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
+		97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndToEndTests.swift; sourceTree = "<group>"; };
+		A745B87C4430B9C3567710FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationUITests.swift; sourceTree = "<group>"; };
+		B4D1F414EBC1D0E8227A01D2 /* PsychosocialAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychosocialAnalyticsTests.swift; sourceTree = "<group>"; };
+		BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PsychosocialAnalyticsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychosocialAnalyticsUITests.swift; sourceTree = "<group>"; };
+		D10C3C3E185662007477BC42 /* MiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareTests.swift; sourceTree = "<group>"; };
+		D98522E3530F3278A5AC938A /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		EC9C4BE60057C3203FCD90D0 /* AIGenerationBackendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationBackendTests.swift; sourceTree = "<group>"; };
+		EDA75354063C99852E8D82D8 /* PsychosocialAnalyticsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychosocialAnalyticsApp.swift; sourceTree = "<group>"; };
+		F0257CBBA4702DE2AC0CE9A6 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E49FDB4AC8AE2D2EFBAAE033 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8400BF68B117250281F9B9CE /* PsychosocialAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F301D1D2285A2502267AFE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9D5CF955DE81D25AD83E15E /* PsychosocialAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06E2E17A633A9D347D926D47 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E5DDE2BB2ACE71A9314AC2C3 /* PsychosocialAnalyticsApp */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1558ACCA6FD996D3E6235B76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */,
+				72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */,
+				BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D325768095B1A2DB6FC7759 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3CFC3215FC69034FB740F704 /* PsychosocialAnalyticsTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		306C69B8DB9F091E555D07A2 /* PsychosocialAnalyticsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */,
+				CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */,
+			);
+			path = PsychosocialAnalyticsUITests;
+			sourceTree = "<group>";
+		};
+		3CFC3215FC69034FB740F704 /* PsychosocialAnalyticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC9C4BE60057C3203FCD90D0 /* AIGenerationBackendTests.swift */,
+				67D213C8573CCE558948231A /* AIGenerationEndToEndTests.swift */,
+				6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */,
+				5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */,
+				664317B97B712F7DB6B904A6 /* BackendServiceTests.swift */,
+				9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */,
+				97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */,
+				32C091E2D79B1EF5F31239F1 /* GenAIServiceTests.swift */,
+				D98522E3530F3278A5AC938A /* IntegrationTests.swift */,
+				D10C3C3E185662007477BC42 /* MiddlewareTests.swift */,
+				B4D1F414EBC1D0E8227A01D2 /* PsychosocialAnalyticsTests.swift */,
+				8665E5470A71E4655E017DE4 /* UploadAccessTests.swift */,
+				9C8112B42F76588DBDEAB1A4 /* Support */,
+			);
+			path = PsychosocialAnalyticsTests;
+			sourceTree = "<group>";
+		};
+		64899B978F862F8BE8C46EDB = {
+			isa = PBXGroup;
+			children = (
+				06E2E17A633A9D347D926D47 /* App */,
+				E13C84B3AC058649CBF25377 /* Packages */,
+				2D325768095B1A2DB6FC7759 /* Tests */,
+				9FFD95817EE9DB59607CF3C3 /* UITests */,
+				1558ACCA6FD996D3E6235B76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C8112B42F76588DBDEAB1A4 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F0257CBBA4702DE2AC0CE9A6 /* TestSupport.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		9FFD95817EE9DB59607CF3C3 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				306C69B8DB9F091E555D07A2 /* PsychosocialAnalyticsUITests */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		E13C84B3AC058649CBF25377 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				17B21878CE41E0B14DE8E530 /* Psychosocial Analytics */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		E5DDE2BB2ACE71A9314AC2C3 /* PsychosocialAnalyticsApp */ = {
+			isa = PBXGroup;
+			children = (
+				715A92D883B0067869D4DEC3 /* Assets.xcassets */,
+				A745B87C4430B9C3567710FE /* Info.plist */,
+				EDA75354063C99852E8D82D8 /* PsychosocialAnalyticsApp.swift */,
+			);
+			path = PsychosocialAnalyticsApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		482D26356D1EF701C016A4F8 /* PsychosocialAnalyticsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94DC5F63C48A8F822319E426 /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsApp" */;
+			buildPhases = (
+				B6967E3FFCB707DB722639C8 /* Sources */,
+				F1E30ECA952D8125CAE09704 /* Resources */,
+				F301D1D2285A2502267AFE9A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PsychosocialAnalyticsApp;
+			packageProductDependencies = (
+				159207885FEF5FD64FDA0714 /* PsychosocialAnalytics */,
+			);
+			productName = PsychosocialAnalyticsApp;
+			productReference = 03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A35CE98DC350F5A386144D48 /* PsychosocialAnalyticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07F49651A1DBE4EEA40C7EBD /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsTests" */;
+			buildPhases = (
+				A6DFD06FB28D4E12BA94D088 /* Sources */,
+				E49FDB4AC8AE2D2EFBAAE033 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PsychosocialAnalyticsTests;
+			packageProductDependencies = (
+				E2EAEDD5E34444091222528B /* PsychosocialAnalytics */,
+			);
+			productName = PsychosocialAnalyticsTests;
+			productReference = 72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E84A082A20F9471084BDB098 /* PsychosocialAnalyticsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0F25462E90DA1E9269D5056 /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsUITests" */;
+			buildPhases = (
+				74A94D2568B33D1784F2EEED /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E32C4CAAC29E26D751E9B1F5 /* PBXTargetDependency */,
+			);
+			name = PsychosocialAnalyticsUITests;
+			packageProductDependencies = (
+			);
+			productName = PsychosocialAnalyticsUITests;
+			productReference = BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD001AC557A829E492ED7AC0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					482D26356D1EF701C016A4F8 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					A35CE98DC350F5A386144D48 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					E84A082A20F9471084BDB098 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 482D26356D1EF701C016A4F8;
+					};
+				};
+			};
+			buildConfigurationList = 515A0B0D49AF69768BEFBB3E /* Build configuration list for PBXProject "PsychosocialAnalytics" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 64899B978F862F8BE8C46EDB;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0425692D510F9E653DAD04F5 /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1558ACCA6FD996D3E6235B76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				482D26356D1EF701C016A4F8 /* PsychosocialAnalyticsApp */,
+				A35CE98DC350F5A386144D48 /* PsychosocialAnalyticsTests */,
+				E84A082A20F9471084BDB098 /* PsychosocialAnalyticsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1E30ECA952D8125CAE09704 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C841608D985C45D14C2A161F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		74A94D2568B33D1784F2EEED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB0BACDAF0FE407FE6DE1EB9 /* AIGenerationUITests.swift in Sources */,
+				0DA2B17FFCEB0B186761A83B /* PsychosocialAnalyticsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6DFD06FB28D4E12BA94D088 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC30C4C7D29820E41A7E5E2 /* AIGenerationBackendTests.swift in Sources */,
+				6021FAD004C868ABBC99A695 /* AIGenerationEndToEndTests.swift in Sources */,
+				0C8C45429E7D3B2245064B3F /* AIGenerationIntegrationTests.swift in Sources */,
+				80C7D99F04FDE4A40F8462A5 /* AssessmentViewModelAITests.swift in Sources */,
+				41FF72152808F65C50C11EC8 /* BackendServiceTests.swift in Sources */,
+				9DFBF18048F18450F41431FC /* DatabaseTests.swift in Sources */,
+				1017FA3AE0404CC1AC22AE28 /* EndToEndTests.swift in Sources */,
+				78D4EE26BCC79EF8B50459A9 /* GenAIServiceTests.swift in Sources */,
+				7002162FAD3A8F23BEF56CB4 /* IntegrationTests.swift in Sources */,
+				D445F30E6857C782D6D8048F /* MiddlewareTests.swift in Sources */,
+				3B9E3D6929DF4FAFC6DDE6E6 /* PsychosocialAnalyticsTests.swift in Sources */,
+				1BD24F3D40364D9E5F7378BA /* TestSupport.swift in Sources */,
+				50329B413088A60AE4FB865E /* UploadAccessTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6967E3FFCB707DB722639C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AFCF4391E6AF16AD2B95772 /* PsychosocialAnalyticsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E32C4CAAC29E26D751E9B1F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 482D26356D1EF701C016A4F8 /* PsychosocialAnalyticsApp */;
+			targetProxy = A866547470D86A2BAFFF5A40 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0D12A4B8C6A0469DCA5200B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PsychosocialAnalyticsApp;
+			};
+			name = Debug;
+		};
+		1D79DDF1B285C6FC3A9F3EAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		34EF31951DF4A30D09D8A001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4CC4AAD11689C77466D4EF02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/PsychosocialAnalyticsApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Psychosocial Analytics";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		693A12FB9CA7DFE1623A92BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		947F18AA599A76FADE41DD36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0652990D726A44170E2CA2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PsychosocialAnalyticsApp;
+			};
+			name = Release;
+		};
+		F84BCAE347E31649C88B63AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/PsychosocialAnalyticsApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Psychosocial Analytics";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07F49651A1DBE4EEA40C7EBD /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34EF31951DF4A30D09D8A001 /* Debug */,
+				693A12FB9CA7DFE1623A92BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		515A0B0D49AF69768BEFBB3E /* Build configuration list for PBXProject "PsychosocialAnalytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D79DDF1B285C6FC3A9F3EAF /* Debug */,
+				947F18AA599A76FADE41DD36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		94DC5F63C48A8F822319E426 /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CC4AAD11689C77466D4EF02 /* Debug */,
+				F84BCAE347E31649C88B63AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F0F25462E90DA1E9269D5056 /* Build configuration list for PBXNativeTarget "PsychosocialAnalyticsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D12A4B8C6A0469DCA5200B7 /* Debug */,
+				B0652990D726A44170E2CA2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0425692D510F9E653DAD04F5 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		159207885FEF5FD64FDA0714 /* PsychosocialAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PsychosocialAnalytics;
+		};
+		E2EAEDD5E34444091222528B /* PsychosocialAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PsychosocialAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FD001AC557A829E492ED7AC0 /* Project object */;
+}

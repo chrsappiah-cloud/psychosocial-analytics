@@ -1,0 +1,43 @@
+import Foundation
+
+/// Stable identifiers for XCUITest and VoiceOver routing.
+public enum AccessibilityID {
+    public static let tabHome = "tab_home"
+    public static let tabAssess = "tab_assess"
+    public static let tabClients = "tab_clients"
+    public static let tabUpload = "tab_upload"
+    public static let screenUpload = "screen_upload"
+    public static let uploadSegmentPicker = "upload_segment_picker"
+    public static let buttonPickFiles = "button_pick_files"
+    public static let buttonPickPhotos = "button_pick_photos"
+    public static let buttonUploadText = "button_upload_text"
+    public static let fieldImportURL = "field_import_url"
+    public static let fieldClientID = "field_client_id"
+    public static let buttonImportURL = "button_import_url"
+    public static let fieldClientName = "field_client_name"
+    public static let fieldClientNotes = "field_client_notes"
+    public static let stepperClientRisk = "stepper_client_risk"
+    public static let buttonSaveNewClient = "button_save_new_client"
+    public static let buttonGoToNewClient = "button_go_new_client"
+    public static let buttonApplyAccess = "button_apply_access"
+    public static let buttonRestorePurchases = "button_restore_purchases"
+    public static let tabInsights = "tab_insights"
+    public static let tabReports = "tab_reports"
+    public static let tabSettings = "tab_settings"
+
+    public static let screenDashboard = "screen_dashboard"
+    public static let screenAssessments = "screen_assessments"
+    public static let screenClients = "screen_clients"
+    public static let screenInsights = "screen_insights"
+    public static let screenReports = "screen_reports"
+    public static let screenSettings = "screen_settings"
+
+    public static let appBrandTitle = "app_brand_title"
+    public static let buttonNewAssessment = "button_new_assessment"
+    public static let buttonGenerateAIDraft = "button_generate_ai_draft"
+    public static let aiGeneratingIndicator = "ai_generating_indicator"
+    public static let aiDraftCountLabel = "ai_draft_count_label"
+    public static let aiErrorLabel = "ai_error_label"
+    public static let aiSuccessBanner = "ai_success_banner"
+    public static let searchClients = "search_clients"
+}

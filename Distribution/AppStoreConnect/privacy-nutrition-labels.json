@@ -1,0 +1,33 @@
+{
+  "privacyTypes": [
+    {
+      "privacyType": "NAME",
+      "identifier": "CLIENT_NAME",
+      "purposes": ["APP_FUNCTIONALITY"],
+      "dataLinkedToUser": false,
+      "dataUsedForTracking": false
+    },
+    {
+      "privacyType": "HEALTH",
+      "identifier": "PSYCHOSOCIAL_ASSESSMENT",
+      "purposes": ["APP_FUNCTIONALITY"],
+      "dataLinkedToUser": false,
+      "dataUsedForTracking": false
+    },
+    {
+      "privacyType": "OTHER_USER_CONTENT",
+      "identifier": "UPLOADED_MEDIA",
+      "purposes": ["APP_FUNCTIONALITY"],
+      "dataLinkedToUser": false,
+      "dataUsedForTracking": false
+    },
+    {
+      "privacyType": "EMAIL_ADDRESS",
+      "identifier": "USER_PROFILE",
+      "purposes": ["APP_FUNCTIONALITY"],
+      "dataLinkedToUser": true,
+      "dataUsedForTracking": false
+    }
+  ],
+  "notes": "Map these labels in App Store Connect → App Privacy. No tracking. Data used for clinical documentation only."
+}
