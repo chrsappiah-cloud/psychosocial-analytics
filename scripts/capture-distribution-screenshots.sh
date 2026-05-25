@@ -39,7 +39,10 @@ capture() {
   fi
   sleep 3
   xcrun simctl io booted screenshot "$DEST/${file}"
-  echo "  ✓ ${file}"
+  # App Store 6.7" requires 1290×2796 (simulator captures are ~2064×2752)
+  mkdir -p "$DEST/appstore-ready"
+  sips -z 2796 1290 "$DEST/${file}" --out "$DEST/appstore-ready/${file}" >/dev/null
+  echo "  ✓ ${file} (resized to 1290×2796)"
 }
 
 echo "Capturing iPhone 6.7\" screenshots..."

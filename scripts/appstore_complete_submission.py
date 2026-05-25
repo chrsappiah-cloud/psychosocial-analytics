@@ -14,7 +14,8 @@ import jwt
 
 ROOT = Path(__file__).resolve().parents[1]
 RESPONSE = json.loads((ROOT / "Distribution/AppStoreConnect/submission-response.json").read_text())
-SCREENSHOTS = ROOT / "Distribution/screenshots"
+SCREENSHOTS = ROOT / "Distribution/screenshots/appstore-ready"
+RAW_SCREENSHOTS = ROOT / "Distribution/screenshots"
 
 ISSUER_ID = "70c46c69-5d6d-438d-b300-31df2b93163a"
 KEY_ID = "A863K5FF84"
@@ -211,7 +212,16 @@ def upload_binary(path: Path, operations: list) -> None:
                 raise RuntimeError(f"Upload failed {resp.status}")
 
 
+def ensure_screenshot_dimensions() -> None:
+    """Resize raw captures to 1290×2796 for App Store Connect."""
+    import subprocess
+
+    script = ROOT / "scripts/resize-screenshots-for-appstore.sh"
+    subprocess.run(["bash", str(script)], check=True)
+
+
 def upload_screenshots(client: ASCClient) -> None:
+    ensure_screenshot_dimensions()
     sets = client.get(
         f"https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{VERSION_LOC_ID}/appScreenshotSets"
         f"?filter[screenshotDisplayType]={DISPLAY_TYPE}"
@@ -270,14 +280,23 @@ def upload_screenshots(client: ASCClient) -> None:
                 "data": {
                     "type": "appScreenshots",
                     "id": shot_id,
-                    "attributes": {
-                        "uploaded": True,
-                        "sourceFileChecksum": reserved["data"]["attributes"].get("sourceFileChecksum"),
-                    },
+                    "attributes": {"uploaded": True},
                 }
             },
         )
-        print(f"  ✓ uploaded {name} (#{index + 1})")
+        # Wait for processing
+        for _ in range(30):
+            status = client.get(f"https://api.appstoreconnect.apple.com/v1/appScreenshots/{shot_id}")
+            state = (status["data"]["attributes"].get("assetDeliveryState") or {}).get("state")
+            if state in ("COMPLETE", "READY_FOR_SALE"):
+                print(f"  ✓ {name} (#{index + 1}) — {state}")
+                break
+            if state == "FAILED":
+                errors = (status["data"]["attributes"].get("assetDeliveryState") or {}).get("errors", [])
+                raise RuntimeError(f"{name} failed: {errors}")
+            time.sleep(2)
+        else:
+            print(f"  ⚠ {name} still processing (check App Store Connect)")
 
 
 def submit_for_review(client: ASCClient) -> None:
@@ -304,9 +323,12 @@ def submit_for_review(client: ASCClient) -> None:
 def main() -> int:
     args = sys.argv[1:]
     submit_only = "--submit-only" in args
+    screenshots_only = "--screenshots-only" in args
     client = ASCClient()
 
-    if not submit_only:
+    if screenshots_only:
+        upload_screenshots(client)
+    elif not submit_only:
         update_metadata(client)
         ensure_review_detail(client)
         upload_screenshots(client)
