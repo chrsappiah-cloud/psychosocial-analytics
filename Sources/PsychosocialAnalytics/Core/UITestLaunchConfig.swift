@@ -10,6 +10,9 @@ public enum UITestLaunchConfig {
         if args.contains("--skip-login") {
             AccessControlService.shared.promoteToAdministrator()
             AppCoordinator.shared.isAuthenticated = true
+            if args.contains("--admin-tab") {
+                AppCoordinator.shared.activeTab = .admin
+            }
         }
 
         let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]

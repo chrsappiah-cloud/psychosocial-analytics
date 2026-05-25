@@ -1,83 +1,51 @@
 import XCTest
 
-/// Captures 6.7" App Store screenshots. Run:
-/// xcodebuild test -scheme PsychosocialAnalytics -only-testing:PsychosocialAnalyticsUITests/AppStoreScreenshotUITests
+/// Captures 6.7" App Store screenshots by saving directly to filesystem.
+/// Run: xcodebuild test -scheme PsychosocialAnalytics -only-testing:PsychosocialAnalyticsUITests/AppStoreScreenshotUITests
 final class AppStoreScreenshotUITests: XCTestCase {
     private var app: XCUIApplication!
+    private let screenshotsDir = "/tmp/appstore_screenshots"
 
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments += ["--uitesting"]
+        app.launchArguments += ["--uitesting", "--skip-login"]
         app.launch()
+        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
     }
 
-    func testCaptureAppStoreScreenshots() throws {
-        let loginScreen = app.staticTexts["Psychosocial"].firstMatch
-        XCTAssertTrue(loginScreen.waitForExistence(timeout: 10))
-
-        capture(name: "01-login")
-
-        signInAsAdmin()
-
-        let tabBar = app.tabBars.firstMatch
-        XCTAssertTrue(tabBar.waitForExistence(timeout: 10))
-
+    func testCaptureScreenshots() throws {
         capture(tab: "Home", name: "02-home")
         capture(tab: "Upload", name: "03-upload")
         capture(tab: "Assess", name: "04-assess")
         capture(tab: "Clients", name: "05-clients")
         capture(tab: "Insights", name: "06-insights")
-        capture(tab: "Settings", name: "07-settings")
-
-        let adminTab = app.tabBars.buttons["Admin"]
-        if adminTab.waitForExistence(timeout: 5) {
-            capture(tab: "Admin", name: "08-admin-overview")
-            captureAdminPayments(name: "09-admin-payments")
-            captureAdminApplePay(name: "10-admin-apple-pay")
-        } else {
-            let more = app.tabBars.buttons["More"]
-            if more.waitForExistence(timeout: 5) {
-                more.tap()
-                sleep(1)
-                let adminCell = app.tables.cells.containing(NSPredicate(format: "label CONTAINS 'Admin'")).firstMatch
-                if adminCell.waitForExistence(timeout: 5) {
-                    adminCell.tap()
-                    sleep(1)
-                    capture(name: "08-admin-overview")
-                }
-            }
-        }
+        capture(tab: "Reports", name: "07-reports")
+        capture(tab: "Settings", name: "08-settings")
+        selectAdminTab()
+        sleep(2)
+        capture(name: "09-admin-overview")
+        app.swipeUp()
+        sleep(1)
+        capture(name: "10-admin-payments")
+        app.swipeUp()
+        sleep(1)
+        capture(name: "11-admin-apple-pay")
     }
 
-    private func signInAsAdmin() {
-        let adminTabButton = app.buttons["Administrator"]
-        if adminTabButton.waitForExistence(timeout: 5) {
-            adminTabButton.tap()
-            sleep(1)
-        }
-
-        let emailField = app.textFields.firstMatch
-        if emailField.waitForExistence(timeout: 5) {
-            emailField.tap()
-            emailField.typeText("admin@psychosocialanalytics.com")
-        }
-
-        let passwordField = app.secureTextFields.firstMatch
-        if passwordField.waitForExistence(timeout: 5) {
-            passwordField.tap()
-            passwordField.typeText("admin123")
-        }
-
-        let signInButton = app.buttons["Sign In"].firstMatch
-        if signInButton.waitForExistence(timeout: 5) {
-            signInButton.tap()
-            sleep(2)
-        }
+    private func saveScreenshot(_ name: String) {
+        let shot = app.screenshot()
+        let png = shot.pngRepresentation
+        let url = URL(fileURLWithPath: "\(screenshotsDir)/\(name).png")
+        try? FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try? png.write(to: url)
+        print("SAVED: \(url.path)")
     }
 
     private func capture(name: String) {
         sleep(1)
+        saveScreenshot(name)
+        // Also add as XCTAttachment for xcresult
         let shot = app.screenshot()
         let attachment = XCTAttachment(screenshot: shot)
         attachment.name = name
@@ -86,46 +54,29 @@ final class AppStoreScreenshotUITests: XCTestCase {
     }
 
     private func capture(tab title: String, name: String) {
-        UITestTabBar.select(title, in: app)
+        navigateToTab(title)
         sleep(2)
-        let shot = app.screenshot()
-        let attachment = XCTAttachment(screenshot: shot)
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
+        capture(name: name)
     }
 
-    private func captureAdminPayments(name: String) {
-        UITestTabBar.select("Admin", in: app)
-        sleep(1)
-
-        let paymentsButton = app.buttons["Payments"]
-        if paymentsButton.waitForExistence(timeout: 5) {
-            paymentsButton.tap()
-            sleep(1)
+    private func navigateToTab(_ title: String) {
+        let direct = app.tabBars.buttons[title]
+        if direct.waitForExistence(timeout: 5), direct.isHittable {
+            direct.tap()
+        } else {
+            let more = app.tabBars.buttons["More"]
+            if more.waitForExistence(timeout: 5) {
+                more.tap()
+                sleep(1)
+                let cell = app.tables.cells.containing(
+                    NSPredicate(format: "label CONTAINS %@", title)
+                ).firstMatch
+                if cell.waitForExistence(timeout: 5) { cell.tap() }
+            }
         }
-
-        let shot = app.screenshot()
-        let attachment = XCTAttachment(screenshot: shot)
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
     }
 
-    private func captureAdminApplePay(name: String) {
-        UITestTabBar.select("Admin", in: app)
-        sleep(1)
-
-        let applePayButton = app.buttons["Apple Pay"]
-        if applePayButton.waitForExistence(timeout: 5) {
-            applePayButton.tap()
-            sleep(1)
-        }
-
-        let shot = app.screenshot()
-        let attachment = XCTAttachment(screenshot: shot)
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
+    private func selectAdminTab() {
+        navigateToTab("Admin")
     }
 }

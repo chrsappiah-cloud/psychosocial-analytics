@@ -100,6 +100,7 @@ public struct LoginView: View {
                         Text(tab.title)
                             .font(.caption.weight(.semibold))
                     }
+                    .accessibilityIdentifier("login_tab_\(tab.rawValue)")
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
                     .background(

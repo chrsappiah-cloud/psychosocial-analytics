@@ -1,0 +1,89 @@
+{
+  "appStoreConnectAppId": "6768490648",
+  "version": "1.0.0",
+  "build": "1",
+  "preparedDate": "2026-05-25",
+  "submissionFields": {
+    "versionInfo": {
+      "whatsNew": "Initial release of Psychosocial Analytics for iOS.\n\n• Structured psychosocial assessments with section-based clinical workflow\n• Upload hub: files, media, pasted text, and HTTPS URL imports\n• New client intake with secure sync when configured\n• Caseload dashboard, client search, insights, and reports\n• AI-assisted report drafts (review before clinical use)\n• Public / Administrator login with role-based access control\n• Admin panel: user management, subscription control, storage monitoring\n• Apple In-App Purchases (StoreKit 2): Professional / Enterprise subscriptions\n• Apple Pay integration for one-time report purchases and consultation fees\n• Dark, accessible interface for field use",
+      "copyright": "© 2026 World Class Services"
+    },
+    "appInfo": {
+      "subtitle": "Clinical caseload & psychosocial assessments",
+      "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams.",
+      "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, tiers, account status, and storage backends\n• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2\n• Apple Pay integration for one-time report purchases and consultation fees\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
+      "keywords": "psychosocial,social work,assessment,caseload,clinical,mental health,reports,apple pay,admin panel"
+    },
+    "urls": {
+      "supportURL": "https://www.psychosocialanalytics.com/support",
+      "marketingURL": "https://www.psychosocialanalytics.com",
+      "privacyPolicyURL": "https://www.psychosocialanalytics.com/privacy"
+    },
+    "appReviewInfo": {
+      "signInRequired": true,
+      "demoAccountName": "admin@psychosocialanalytics.com",
+      "demoAccountPassword": "admin123",
+      "contactEmail": "support@psychosocialanalytics.com",
+      "notes": "Psychosocial Analytics — App Review Notes (v1.0.0)\n\n- Public login: enter any email to sign in as a clinician user.\n- Administrator login: admin@psychosocialanalytics.com / admin123 for full admin panel.\n- Admin panel includes Overview, Access Control, Payments, Storage, and Apple Pay sections.\n- Apple Pay uses PassKit with merchant ID merchant.com.wcs.psychosocialanalytics.\n- Upload tab supports files, photos, video, text, and HTTPS URL imports.\n- AI drafts are simulated; no PHI sent to third-party AI.\n- Subscriptions use StoreKit 2 (Professional / Enterprise).\n- Export compliance: standard HTTPS only (ITSAppUsesNonExemptEncryption = false)."
+    },
+    "exportCompliance": {
+      "usesEncryption": true,
+      "exempt": true,
+      "exemptReason": "App uses only standard Apple HTTPS/TLS APIs. No proprietary cryptography implemented."
+    },
+    "inAppPurchases": [
+      {
+        "productID": "com.wcs.psychosocial.pro.monthly",
+        "type": "Auto-renewable subscription",
+        "displayName": "Professional Monthly"
+      },
+      {
+        "productID": "com.wcs.psychosocial.pro.yearly",
+        "type": "Auto-renewable subscription",
+        "displayName": "Professional Yearly"
+      },
+      {
+        "productID": "com.wcs.psychosocial.enterprise.monthly",
+        "type": "Auto-renewable subscription",
+        "displayName": "Enterprise Monthly"
+      },
+      {
+        "productID": "com.wcs.psychosocial.report",
+        "type": "Consumable",
+        "displayName": "Single Report (Apple Pay)"
+      },
+      {
+        "productID": "com.wcs.psychosocial.consultation",
+        "type": "Consumable",
+        "displayName": "Consultation Fee (Apple Pay)"
+      }
+    ],
+    "screenshots": {
+      "iphone": {
+        "displayGroup": "6.7\"",
+        "files": [
+          "Distribution/screenshots/01-login.png",
+          "Distribution/screenshots/02-home.png",
+          "Distribution/screenshots/03-upload.png",
+          "Distribution/screenshots/04-assess.png",
+          "Distribution/screenshots/05-clients.png",
+          "Distribution/screenshots/06-insights.png",
+          "Distribution/screenshots/07-reports.png",
+          "Distribution/screenshots/08-settings.png",
+          "Distribution/screenshots/09-admin-overview.png",
+          "Distribution/screenshots/10-admin-payments.png",
+          "Distribution/screenshots/11-admin-apple-pay.png"
+        ]
+      },
+      "ipad": {
+        "displayGroup": "12.9\"",
+        "files": [
+          "Distribution/screenshots/ipad/01-home.png",
+          "Distribution/screenshots/ipad/02-upload.png",
+          "Distribution/screenshots/ipad/03-clients.png",
+          "Distribution/screenshots/ipad/04-admin.png"
+        ]
+      }
+    }
+  }
+}
