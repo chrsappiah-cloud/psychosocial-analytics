@@ -4,7 +4,7 @@
 **App Store Connect ID:** `6768490648`  
 **Version page:** https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight  
 **Bundle ID:** `wcs.Psychosocial--Analytics`  
-**Marketing version / build:** `1.0.0` / `1`
+**Marketing version / build:** `1.0.0` / `3` (uploaded & attached)
 
 Use this file to copy fields into the in-flight version. After pasting, attach build **1.0.0 (1)** from TestFlight once processing completes.
 

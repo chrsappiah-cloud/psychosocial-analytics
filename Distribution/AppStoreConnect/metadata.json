@@ -13,7 +13,7 @@
   "ageRating": "4+",
   "pricing": "Free",
   "availability": "All territories",
-  "subtitle": "Clinical caseload & psychosocial assessments",
+  "subtitle": "Caseload & assessments",
   "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams.",
   "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, tiers, account status, and storage backends\n• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2\n• Apple Pay integration for one-time report purchases and consultation fees\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
   "keywords": [
