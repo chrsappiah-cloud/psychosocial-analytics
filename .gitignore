@@ -40,5 +40,5 @@ Config/Secrets.swift
 # Test artifacts (keep scripts, ignore outputs)
 TestResults.xcresult/
 build/
-Distribution/screenshots/*.png
-Distribution/screenshots/*.jpg
+Distribution/screenshots/**/*.png
+Distribution/screenshots/**/*.jpg
