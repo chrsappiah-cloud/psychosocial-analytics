@@ -177,6 +177,7 @@ public struct AssessmentDetailView: View {
         }
         .toolbarBackground(PremiumTheme.surface.opacity(0.95), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
+        .accessibilityIdentifier("screen_assessment_detail")
         .psychosocialScreen()
     }
 }

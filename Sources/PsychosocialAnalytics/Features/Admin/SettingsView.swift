@@ -2,6 +2,7 @@ import SwiftUI
 import StoreKit
 
 public struct SettingsView: View {
+    @StateObject private var coordinator = AppCoordinator.shared
     @StateObject private var env = AppEnvironment.shared
     @StateObject private var access = AccessControlService.shared
     @StateObject private var payments = StoreKitPaymentService.shared
@@ -61,6 +62,32 @@ public struct SettingsView: View {
                     }
                     .padding(.horizontal, 16)
                     #endif
+
+                    PremiumTheme.cardStyle {
+                        VStack(alignment: .leading, spacing: 12) {
+                            BrandedSectionTitle("Session")
+                            HStack {
+                                Label(access.currentUser.displayName, systemImage: "person.circle")
+                                    .font(.subheadline.weight(.medium))
+                                    .foregroundStyle(PremiumTheme.textPrimary)
+                                Spacer()
+                                Text(access.currentUser.role.displayName)
+                                    .font(.caption)
+                                    .foregroundStyle(PremiumTheme.emeraldLight)
+                            }
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    coordinator.signOut()
+                                }
+                            } label: {
+                                Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .tint(PremiumTheme.danger)
+                            .psychosocialSecondaryButton()
+                        }
+                    }
+                    .padding(.horizontal, 16)
 
                     PremiumTheme.cardStyle {
                         VStack(alignment: .leading, spacing: 10) {

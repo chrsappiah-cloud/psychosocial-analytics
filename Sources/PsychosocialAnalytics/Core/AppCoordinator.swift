@@ -8,6 +8,7 @@ public enum AppTab: String, CaseIterable {
     case analytics
     case reports
     case settings
+    case admin
     
     /// Short, legible labels for the tab bar.
     public var title: String {
@@ -19,6 +20,7 @@ public enum AppTab: String, CaseIterable {
         case .analytics: return "Insights"
         case .reports: return "Reports"
         case .settings: return "Settings"
+        case .admin: return "Admin"
         }
     }
     
@@ -31,6 +33,7 @@ public enum AppTab: String, CaseIterable {
         case .analytics: return "chart.bar"
         case .reports: return "list.bullet.rectangle"
         case .settings: return "gearshape"
+        case .admin: return "lock.shield"
         }
     }
 
@@ -43,6 +46,7 @@ public enum AppTab: String, CaseIterable {
         case .analytics: return AccessibilityID.tabInsights
         case .reports: return AccessibilityID.tabReports
         case .settings: return AccessibilityID.tabSettings
+        case .admin: return "tab_admin"
         }
     }
 }
@@ -56,11 +60,17 @@ public class AppCoordinator: ObservableObject {
     public static let shared = AppCoordinator()
     
     @Published public var activeTab: AppTab = .dashboard
+    @Published public var isAuthenticated: Bool = false
     @Published public var notificationMessage: String?
     @Published public var notificationType: NotificationType = .info
     @Published public var isCommandCenterOpen: Bool = false
-    
+
     private init() {}
+
+    public func signOut() {
+        isAuthenticated = false
+        activeTab = .dashboard
+    }
     
     public func showNotification(_ message: String, type: NotificationType = .info) {
         notificationMessage = message

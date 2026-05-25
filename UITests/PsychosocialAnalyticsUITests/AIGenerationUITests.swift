@@ -7,7 +7,7 @@ final class AIGenerationUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments += ["--uitesting", "--ai-fast"]
+        app.launchArguments += ["--uitesting", "--ai-fast", "--skip-login"]
         app.launch()
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 20))
     }
@@ -66,24 +66,31 @@ final class AIGenerationUITests: XCTestCase {
 
     @discardableResult
     private func openFirstAssessmentDetail() -> Bool {
-        app.tabBars.buttons.element(boundBy: 1).tap()
-        guard app.otherElements["screen_assessments"].waitForExistence(timeout: 15) else {
+        UITestTabBar.select("Assess", in: app)
+        guard app.staticTexts["Assessments"].waitForExistence(timeout: 20)
+            || app.otherElements["screen_assessments"].waitForExistence(timeout: 5) else {
             return false
         }
 
-        let assessmentRow = app.staticTexts.matching(
-            NSPredicate(format: "label CONTAINS 'Psychosocial assessment'")
-        ).firstMatch
-        if assessmentRow.waitForExistence(timeout: 15) {
-            assessmentRow.tap()
-        } else if app.cells.firstMatch.waitForExistence(timeout: 10) {
-            app.cells.firstMatch.tap()
-        } else {
+        let newButton = app.buttons["button_new_assessment"]
+        if app.tables.cells.count == 0, newButton.waitForExistence(timeout: 5) {
+            newButton.tap()
+            sleep(2)
+        }
+
+        guard app.tables.cells.firstMatch.waitForExistence(timeout: 20) else {
+            return false
+        }
+        app.tables.cells.firstMatch.tap()
+        sleep(1)
+
+        guard app.otherElements["screen_assessment_detail"].waitForExistence(timeout: 20)
+            || app.navigationBars["Assessment"].waitForExistence(timeout: 10) else {
             return false
         }
 
-        return app.buttons["Generate AI report draft"].waitForExistence(timeout: 15)
-            || app.buttons["button_generate_ai_draft"].waitForExistence(timeout: 5)
+        return app.buttons["button_generate_ai_draft"].waitForExistence(timeout: 20)
+            || app.buttons["Generate AI report draft"].waitForExistence(timeout: 10)
     }
 
     private func tapGenerateAIWhenReady() throws {

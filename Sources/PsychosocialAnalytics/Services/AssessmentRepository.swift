@@ -26,7 +26,8 @@ public final class AssessmentRepository: AssessmentRepositoryProtocol, @unchecke
 
     public func loadAssessments() async throws -> [Assessment] {
         if database.exists(collection: Self.assessmentsCollection) {
-            return try database.load([Assessment].self, collection: Self.assessmentsCollection)
+            let local = try database.load([Assessment].self, collection: Self.assessmentsCollection)
+            if !local.isEmpty { return local }
         }
         let remote = try await backend.fetchAssessments()
         if !remote.isEmpty {

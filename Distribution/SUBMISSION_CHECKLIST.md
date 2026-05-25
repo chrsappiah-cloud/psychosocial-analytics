@@ -6,7 +6,7 @@ Complete every item before uploading build `1.0.0 (1)` to App Store Connect.
 
 - [ ] Active Apple Developer Program membership
 - [ ] App ID created: `com.wcs.psychosocial.app`
-- [ ] Capabilities enabled: **In-App Purchase**, **iCloud** (CloudKit + Documents) if using backups
+- [ ] Capabilities enabled: **In-App Purchase**, **iCloud** (CloudKit + Documents), **Apple Pay** (Merchant ID: `merchant.com.wcs.psychosocialanalytics`)
 - [ ] Provisioning profiles / automatic signing configured in Xcode
 
 ## 2. App Store Connect app record
@@ -38,18 +38,29 @@ Create subscriptions in App Store Connect:
 - `com.wcs.psychosocial.pro.yearly`
 - `com.wcs.psychosocial.enterprise.monthly`
 
+Consumables for Apple Pay:
+
+- `com.wcs.psychosocial.report`
+- `com.wcs.psychosocial.consultation`
+
 Attach to the app version before submission.
 
-## 5. Screenshots & preview
+## 5. Apple Pay (PassKit)
 
-- [ ] 6.7" iPhone screenshots (required)
+- [ ] Merchant ID `merchant.com.wcs.psychosocialanalytics` created in Apple Developer portal
+- [ ] Merchant ID enabled in App ID `com.wcs.psychosocial.app`
+- [ ] Payment processing certificate configured
+
+## 6. Screenshots & preview
+
+- [ ] 6.7" iPhone screenshots (required) — see `screenshot-spec.md`
 - [ ] 6.5" or 5.5" screenshots (if supporting older sizes)
 - [ ] iPad screenshots (app supports iPad)
 - [ ] Optional App Preview video
 
-Recommended screens: Home dashboard, Upload hub, New Client, Assessment detail, Settings/subscription.
+Recommended screens: Login, Home dashboard, Upload hub, New Client, Assessment detail, Settings, Admin panel.
 
-## 6. Build & upload
+## 7. Build & upload
 
 ```bash
 # Regenerate project
@@ -61,18 +72,16 @@ xcodebuild test -scheme PsychosocialAnalytics \
   -only-testing:PsychosocialAnalyticsTests \
   CODE_SIGNING_ALLOWED=NO
 
-# Archive in Xcode: Product → Archive → Distribute → App Store Connect
-# Or CLI (with signing configured):
-# xcodebuild -exportArchive -archivePath ... -exportOptionsPlist App/PsychosocialAnalyticsApp/ExportOptions.plist
+# Archive in Xcode: Product -> Archive -> Distribute -> App Store Connect
 ```
 
-## 7. App Review information
+## 8. App Review information
 
-- [ ] Demo account: **Not required** (offline sample data)
-- [ ] Notes: AI drafts are simulated; admin panel hidden in Release
+- [ ] Sign-in required: **Yes** — Public (any email) or Administrator (admin@psychosocialanalytics.com / admin123)
+- [ ] Notes: Login screen appears on launch; admin panel visible after admin sign-in; Apple Pay uses PassKit
 - [ ] Contact info for App Review team
 
-## 8. Post-submission
+## 9. Post-submission
 
 - [ ] Enable TestFlight internal testing
 - [ ] Monitor App Review status
@@ -84,6 +93,7 @@ GitHub Actions runs on every push/PR to `main` and `develop`:
 
 - Build Debug for iOS Simulator
 - Run all `PsychosocialAnalyticsTests` (45+ tests)
+- Run all `PsychosocialAnalyticsUITests` (UI tests)
 - Verify distribution files exist
 
 Release tags `v*.*.*` trigger additional Release validation workflow.

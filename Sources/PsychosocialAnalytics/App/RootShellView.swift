@@ -2,23 +2,21 @@ import SwiftUI
 
 public struct RootShellView: View {
     @StateObject private var coordinator = AppCoordinator.shared
+    @StateObject private var access = AccessControlService.shared
 
     public init() {}
 
     public var body: some View {
         ZStack {
-            AmbientBackground()
-
-            TabView(selection: $coordinator.activeTab) {
-                tab(DashboardView(), .dashboard)
-                tab(AssessmentListView(), .assessments)
-                tab(ClientsView(), .clients)
-                tab(UploadHubView(), .upload)
-                tab(AnalyticsView(), .analytics)
-                tab(ReportsView(), .reports)
-                tab(SettingsView(), .settings)
+            if coordinator.isAuthenticated {
+                mainTabView
+            } else {
+                LoginView(onAuthenticated: {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        coordinator.isAuthenticated = true
+                    }
+                })
             }
-            .tint(PremiumTheme.emerald)
 
             if let message = coordinator.notificationMessage {
                 VStack {
@@ -43,6 +41,27 @@ public struct RootShellView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .task { await UITestLaunchConfig.applyIfNeeded() }
+    }
+
+    private var mainTabView: some View {
+        ZStack {
+            AmbientBackground()
+
+            TabView(selection: $coordinator.activeTab) {
+                tab(DashboardView(), .dashboard)
+                tab(AssessmentListView(), .assessments)
+                tab(ClientsView(), .clients)
+                tab(UploadHubView(), .upload)
+                tab(AnalyticsView(), .analytics)
+                tab(ReportsView(), .reports)
+                tab(SettingsView(), .settings)
+                if access.isAdministrator {
+                    tab(AdminPanelView(), .admin)
+                }
+            }
+            .tint(PremiumTheme.emerald)
+        }
     }
 
     private var notificationIcon: String {

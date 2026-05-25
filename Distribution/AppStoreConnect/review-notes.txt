@@ -1,11 +1,18 @@
 Psychosocial Analytics — App Review Notes (v1.0.0)
 
-- No demo login required. The app runs with sample caseload data offline.
+- No demo login required. App launches with a Public / Administrator login screen.
+- Public Access tab: enter any email to sign in as a clinician user.
+- Administrator tab: use admin@psychosocialanalytics.com / admin123 for full admin panel access.
+- Admin panel (shield icon, visible only to admin role) includes:
+  - Overview dashboard, User access control (role/tier/status)
+  - Payment management (StoreKit subscriptions, transaction history)
+  - Apple Pay one-time purchases (report $9.99, consultation $49.99)
+  - Storage backend status indicators
 - Upload tab supports manual files, photo/video library, pasted text, and public HTTPS URL imports.
 - New Client segment creates client records stored locally and synced when Supabase credentials are configured.
 - AI draft generation on the Assessment screen returns simulated clinical narrative text for workflow validation; no PHI is sent to third-party AI in this build.
-- Administrator and environment controls appear only in Debug builds or after using in-app administrator promotion (Settings).
 - Subscriptions use StoreKit 2 (Professional / Enterprise). Restore Purchases is available in Settings.
+- Apple Pay via PassKit for one-time purchases (configured with merchant ID merchant.com.wcs.psychosocialanalytics).
 - Export compliance: standard HTTPS only (ITSAppUsesNonExemptEncryption = false).
 
 Contact: support@psychosocialanalytics.com

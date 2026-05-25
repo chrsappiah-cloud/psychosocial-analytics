@@ -1,4 +1,6 @@
 {
+  "appStoreConnectAppId": "6768490648",
+  "inflightVersionURL": "https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight",
   "appName": "Psychosocial Analytics",
   "bundleId": "com.wcs.psychosocial.app",
   "sku": "psychosocial-analytics-ios",
@@ -13,7 +15,7 @@
   "availability": "All territories",
   "subtitle": "Clinical caseload & psychosocial assessments",
   "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams.",
-  "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Role-based access and Apple subscription support\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
+  "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, tiers, account status, and storage backends\n• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2\n• Apple Pay integration for one-time report purchases and consultation fees\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
   "keywords": [
     "psychosocial",
     "social work",
@@ -21,12 +23,14 @@
     "caseload",
     "clinical",
     "mental health",
-    "reports"
+    "reports",
+    "apple pay",
+    "admin panel"
   ],
   "supportURL": "https://www.psychosocialanalytics.com/support",
   "marketingURL": "https://www.psychosocialanalytics.com",
   "privacyPolicyURL": "https://www.psychosocialanalytics.com/privacy",
-  "reviewNotes": "Demo account not required. App runs offline with sample data. Developer environment picker is hidden in Release builds. AI draft generation returns simulated clinical text for review.",
+  "reviewNotes": "Demo account not required. App runs offline with sample data. Public login accepts any email. Administrator login uses demo credentials (admin@psychosocialanalytics.com / admin123). AI draft generation returns simulated clinical text for review. Apple Pay integration uses PassKit with merchant ID merchant.com.wcs.psychosocialanalytics.",
   "exportCompliance": {
     "usesEncryption": false,
     "exempt": true,

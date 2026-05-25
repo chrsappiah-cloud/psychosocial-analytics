@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, "ios/**"]
   pull_request:
     branches: [main, develop]
 
@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-test:
-    name: iOS Build & Test
+  unit-tests:
+    name: iOS Unit Tests (DB, middleware, backend, E2E)
     runs-on: macos-15
     timeout-minutes: 45
 
@@ -21,7 +21,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer || sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+        run: |
+          if [ -d /Applications/Xcode_16.4.app ]; then
+            sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
+          else
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
 
       - name: Show Xcode version
         run: xcodebuild -version
@@ -35,9 +40,6 @@ jobs:
       - name: Resolve Swift package
         run: xcodebuild -resolvePackageDependencies -scheme PsychosocialAnalytics
 
-      - name: List simulators
-        run: xcrun simctl list devices available | head -30
-
       - name: Build (iOS Simulator)
         run: |
           xcodebuild build \
@@ -46,31 +48,80 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: Unit tests
+      - name: Unit tests (PsychosocialAnalyticsTests)
         run: |
-          DEST=$(xcrun simctl list devices available | grep -E "iPhone (16|17)" | grep -v "unavailable" | head -1 | sed -E 's/.*\(([-A-F0-9]+)\).*/\1/')
-          if [ -z "$DEST" ]; then
-            xcodebuild test \
-              -scheme PsychosocialAnalytics \
-              -destination 'generic/platform=iOS Simulator' \
-              -only-testing:PsychosocialAnalyticsTests \
-              -configuration Debug \
-              CODE_SIGNING_ALLOWED=NO
+          SIM_ID=$(xcrun simctl list devices available | \
+            grep -E "iPhone (16|17) Pro Max" | grep -v unavailable | head -1 | \
+            sed -E 's/.*\(([A-F0-9-]+)\).*/\1/')
+          if [ -z "$SIM_ID" ]; then
+            DEST='generic/platform=iOS Simulator'
           else
-            xcodebuild test \
-              -scheme PsychosocialAnalytics \
-              -destination "platform=iOS Simulator,id=$DEST" \
-              -only-testing:PsychosocialAnalyticsTests \
-              -configuration Debug \
-              CODE_SIGNING_ALLOWED=NO
+            DEST="platform=iOS Simulator,id=$SIM_ID"
           fi
+          xcodebuild test \
+            -scheme PsychosocialAnalytics \
+            -destination "$DEST" \
+            -only-testing:PsychosocialAnalyticsTests \
+            -configuration Debug \
+            -resultBundlePath TestResults-Unit.xcresult \
+            CODE_SIGNING_ALLOWED=NO
 
-      - name: Upload test results
+      - name: Upload unit test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: xcode-test-results
-          path: TestResults.xcresult
+          name: unit-test-results
+          path: TestResults-Unit.xcresult
+          if-no-files-found: ignore
+
+  ui-tests:
+    name: iOS UI Tests (frontend)
+    runs-on: macos-15
+    timeout-minutes: 45
+    needs: unit-tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          if [ -d /Applications/Xcode_16.4.app ]; then
+            sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
+          else
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: UI tests (PsychosocialAnalyticsUITests)
+        run: |
+          SIM_ID=$(xcrun simctl list devices available | \
+            grep -E "iPhone (16|17) Pro Max" | grep -v unavailable | head -1 | \
+            sed -E 's/.*\(([A-F0-9-]+)\).*/\1/')
+          if [ -z "$SIM_ID" ]; then
+            DEST='generic/platform=iOS Simulator'
+          else
+            DEST="platform=iOS Simulator,id=$SIM_ID"
+          fi
+          xcodebuild test \
+            -scheme PsychosocialAnalytics \
+            -destination "$DEST" \
+            -only-testing:PsychosocialAnalyticsUITests \
+            -configuration Debug \
+            -resultBundlePath TestResults-UI.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload UI test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-results
+          path: TestResults-UI.xcresult
           if-no-files-found: ignore
 
   lint-project:
@@ -84,4 +135,5 @@ jobs:
           test -f App/PsychosocialAnalyticsApp/PrivacyInfo.xcprivacy
           test -f App/PsychosocialAnalyticsApp/Info.plist
           test -f project.yml
+          test -f scripts/run-all-tests.sh
           echo "Distribution and project files present."

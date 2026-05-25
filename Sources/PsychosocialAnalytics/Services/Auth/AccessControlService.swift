@@ -63,6 +63,14 @@ public final class AccessControlService: ObservableObject {
         permissions = Self.permissions(for: currentUser)
     }
 
+    public func updateEmail(_ email: String) {
+        currentUser.email = email
+    }
+
+    public func updateDisplayName(_ name: String) {
+        currentUser.displayName = name
+    }
+
     private static func permissions(for user: AppUserProfile) -> AppPermission {
         user.role == .administrator ? .administrator : .standardUser
     }
