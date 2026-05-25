@@ -65,14 +65,15 @@
           "Distribution/screenshots/01-login.png",
           "Distribution/screenshots/02-home.png",
           "Distribution/screenshots/03-upload.png",
-          "Distribution/screenshots/04-assess.png",
-          "Distribution/screenshots/05-clients.png",
-          "Distribution/screenshots/06-insights.png",
-          "Distribution/screenshots/07-reports.png",
-          "Distribution/screenshots/08-settings.png",
-          "Distribution/screenshots/09-admin-overview.png",
-          "Distribution/screenshots/10-admin-payments.png",
-          "Distribution/screenshots/11-admin-apple-pay.png"
+          "Distribution/screenshots/04-upload-newclient.png",
+          "Distribution/screenshots/05-assess.png",
+          "Distribution/screenshots/06-clients.png",
+          "Distribution/screenshots/07-insights.png",
+          "Distribution/screenshots/08-reports.png",
+          "Distribution/screenshots/09-settings.png",
+          "Distribution/screenshots/10-admin-overview.png",
+          "Distribution/screenshots/11-admin-payments.png",
+          "Distribution/screenshots/12-admin-applepay.png"
         ]
       },
       "ipad": {

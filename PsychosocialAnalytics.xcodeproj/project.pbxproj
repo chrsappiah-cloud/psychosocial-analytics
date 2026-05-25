@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03BB33858D971CA8B2915174 /* PsychosocialAnalyticsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PsychosocialAnalyticsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PsychosocialAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B21878CE41E0B14DE8E530 /* Psychosocial Analytics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Psychosocial Analytics"; path = .; sourceTree = SOURCE_ROOT; };
 		32C091E2D79B1EF5F31239F1 /* GenAIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenAIServiceTests.swift; sourceTree = "<group>"; };
 		5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModelAITests.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationIntegrationTests.swift; sourceTree = "<group>"; };
 		6B516EDBB973B3A6F9918C5A /* UITestTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestTabBar.swift; sourceTree = "<group>"; };
 		715A92D883B0067869D4DEC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsychosocialAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PsychosocialAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8665E5470A71E4655E017DE4 /* UploadAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadAccessTests.swift; sourceTree = "<group>"; };
 		9487C90C55FB12D110A5ECE3 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = ExportOptions.plist; sourceTree = "<group>"; };
 		9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		A745B87C4430B9C3567710FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationUITests.swift; sourceTree = "<group>"; };
 		B4D1F414EBC1D0E8227A01D2 /* PsychosocialAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychosocialAnalyticsTests.swift; sourceTree = "<group>"; };
-		BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsychosocialAnalyticsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PsychosocialAnalyticsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychosocialAnalyticsUITests.swift; sourceTree = "<group>"; };
 		D10C3C3E185662007477BC42 /* MiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareTests.swift; sourceTree = "<group>"; };
 		D98522E3530F3278A5AC938A /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		1558ACCA6FD996D3E6235B76 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03BB33858D971CA8B2915174 /* PsychosocialAnalyticsApp.app */,
+				03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */,
 				72C44EBF509E30595EE64219 /* PsychosocialAnalyticsTests.xctest */,
 				BB837C75488AB24A56E36B2D /* PsychosocialAnalyticsUITests.xctest */,
 			);
@@ -212,7 +212,7 @@
 				159207885FEF5FD64FDA0714 /* PsychosocialAnalytics */,
 			);
 			productName = PsychosocialAnalyticsApp;
-			productReference = 03BB33858D971CA8B2915174 /* PsychosocialAnalyticsApp.app */;
+			productReference = 03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A35CE98DC350F5A386144D48 /* PsychosocialAnalyticsTests */ = {
@@ -259,18 +259,18 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2650;
-				ORGANIZATIONNAME = wcs;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					482D26356D1EF701C016A4F8 = {
+						DevelopmentTeam = TM2WG7HH96;
 						ProvisioningStyle = Automatic;
 					};
 					A35CE98DC350F5A386144D48 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = TM2WG7HH96;
 						ProvisioningStyle = Automatic;
 					};
 					E84A082A20F9471084BDB098 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = TM2WG7HH96;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 482D26356D1EF701C016A4F8;
 					};
@@ -374,7 +374,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics.uitests";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PsychosocialAnalyticsApp;
@@ -385,7 +385,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -419,7 +418,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TM2WG7HH96;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -444,7 +443,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.10;
@@ -462,7 +460,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics.tests";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -474,18 +472,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = TM2WG7HH96;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/PsychosocialAnalyticsApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Psychosocial Analytics";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics";
 				SDKROOT = iphoneos;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -504,7 +501,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics.tests";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -514,7 +511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -548,7 +544,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TM2WG7HH96;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -566,7 +562,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.10;
@@ -585,7 +580,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics.uitests";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PsychosocialAnalyticsApp;
@@ -598,18 +593,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = TM2WG7HH96;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = App/PsychosocialAnalyticsApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Psychosocial Analytics";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcs.psychosocial.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "wcs.Psychosocial--Analytics";
 				SDKROOT = iphoneos;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;

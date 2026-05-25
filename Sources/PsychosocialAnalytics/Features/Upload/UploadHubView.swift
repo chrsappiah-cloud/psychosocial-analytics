@@ -49,6 +49,13 @@ public struct UploadHubView: View {
                     accessBanner
                 }
             }
+            .onAppear {
+                if let index = UserDefaults.standard.object(forKey: "uitest_upload_segment") as? Int,
+                   UploadSegment.allCases.indices.contains(index) {
+                    segment = UploadSegment.allCases[index]
+                    UserDefaults.standard.removeObject(forKey: "uitest_upload_segment")
+                }
+            }
         }
     }
 

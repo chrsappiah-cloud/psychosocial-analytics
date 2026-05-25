@@ -2,7 +2,7 @@
   "appStoreConnectAppId": "6768490648",
   "inflightVersionURL": "https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight",
   "appName": "Psychosocial Analytics",
-  "bundleId": "com.wcs.psychosocial.app",
+  "bundleId": "wcs.Psychosocial--Analytics",
   "sku": "psychosocial-analytics-ios",
   "primaryLanguage": "en-US",
   "marketingVersion": "1.0.0",

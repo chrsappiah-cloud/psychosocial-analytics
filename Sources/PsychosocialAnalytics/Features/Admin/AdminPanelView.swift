@@ -39,6 +39,13 @@ public struct AdminPanelView: View {
             .toolbar(.hidden, for: .navigationBar)
             .accessibilityIdentifier("screen_admin_panel")
             .psychosocialScreen()
+            .onAppear {
+                if let index = UserDefaults.standard.object(forKey: "uitest_admin_section") as? Int,
+                   let section = AdminSection.allCases[safe: index] {
+                    selectedSection = section
+                    UserDefaults.standard.removeObject(forKey: "uitest_admin_section")
+                }
+            }
             .task {
                 storageStatuses = await storage.backendStatuses()
                 selectedRole = access.currentUser.role
@@ -504,4 +511,10 @@ private enum TransactionStatus: String {
     case completed
     case pending
     case failed
+}
+
+private extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
 }

@@ -41,7 +41,10 @@ public struct RootShellView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .task { await UITestLaunchConfig.applyIfNeeded() }
+        .task {
+            ScreenshotLaunchConfig.applyIfNeeded()
+            await UITestLaunchConfig.applyIfNeeded()
+        }
     }
 
     private var mainTabView: some View {

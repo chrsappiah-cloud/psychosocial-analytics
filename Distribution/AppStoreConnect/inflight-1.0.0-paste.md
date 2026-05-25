@@ -3,7 +3,7 @@
 **App:** Psychosocial Analytics  
 **App Store Connect ID:** `6768490648`  
 **Version page:** https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight  
-**Bundle ID:** `com.wcs.psychosocial.app`  
+**Bundle ID:** `wcs.Psychosocial--Analytics`  
 **Marketing version / build:** `1.0.0` / `1`
 
 Use this file to copy fields into the in-flight version. After pasting, attach build **1.0.0 (1)** from TestFlight once processing completes.
@@ -148,12 +148,32 @@ Attach to this version before submit:
 
 ---
 
-## Screenshots
+## Screenshots (6.7" Display)
 
-Required: **6.7" Display** (iPhone 15 Pro Max / 16 Pro Max).  
-Capture list: `screenshot-spec.md` → save PNGs under `Distribution/screenshots/`.
+Generate locally:
 
-Minimum set: Login, Home, Upload (Files), Upload (New Client), Assessments, Settings, Admin Panel.
+```bash
+./scripts/capture-distribution-screenshots.sh
+```
+
+Upload these files from `Distribution/screenshots/` in order:
+
+| # | File |
+|---|------|
+| 1 | `01-login.png` |
+| 2 | `02-home.png` |
+| 3 | `03-upload.png` |
+| 4 | `04-upload-newclient.png` |
+| 5 | `05-assess.png` |
+| 6 | `06-clients.png` |
+| 7 | `07-insights.png` |
+| 8 | `08-reports.png` |
+| 9 | `09-settings.png` |
+| 10 | `10-admin-overview.png` |
+| 11 | `11-admin-payments.png` |
+| 12 | `12-admin-applepay.png` |
+
+Full form field mapping: `FORM_RESPONSES.md`
 
 ---
 

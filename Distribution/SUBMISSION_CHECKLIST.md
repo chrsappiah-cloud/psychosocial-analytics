@@ -26,6 +26,8 @@ Complete every item before uploading build `1.0.0 (1)` to App Store Connect.
 | Export compliance answers | `Distribution/AppStoreConnect/export-compliance-responses.md` |
 | TestFlight notes | `Distribution/TestFlight/release-notes-1.0.0.md` |
 | Review notes | `Distribution/AppStoreConnect/review-notes.txt` |
+| All form fields (copy/paste) | `Distribution/AppStoreConnect/FORM_RESPONSES.md` |
+| Screenshots (generate) | `./scripts/capture-distribution-screenshots.sh` |
 | Privacy nutrition labels | `Distribution/AppStoreConnect/privacy-nutrition-labels.json` |
 | Screenshot capture guide | `Distribution/AppStoreConnect/screenshot-spec.md` |
 | Upload steps | `Distribution/UPLOAD_TO_APP_STORE.md` |
