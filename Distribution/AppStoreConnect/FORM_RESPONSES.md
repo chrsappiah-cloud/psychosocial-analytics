@@ -3,7 +3,7 @@
 **App ID:** `6768490648`  
 **In-flight version:** https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight  
 **Bundle ID:** `wcs.Psychosocial--Analytics`  
-**Version / build:** `1.0.0` / `1`
+**Version / build:** `1.0.0` / `3`
 
 Machine-readable copy: `submission-response.json`  
 Screenshots folder: `Distribution/screenshots/` (run `./scripts/capture-distribution-screenshots.sh`)
@@ -41,7 +41,7 @@ Initial release of Psychosocial Analytics for iOS.
 | Form field | Max | Response |
 |------------|-----|----------|
 | **Name** | — | Psychosocial Analytics |
-| **Subtitle** | 30 | Clinical caseload & psychosocial assessments |
+| **Subtitle** | 30 | Caseload & assessments |
 | **Promotional Text** | 170 | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. |
 
 ### Description
@@ -89,8 +89,6 @@ Upload in this order (files in `Distribution/screenshots/`):
 | 8 | `08-reports.png` | Reports |
 | 9 | `09-settings.png` | Settings & subscriptions |
 | 10 | `10-admin-overview.png` | Admin — Overview |
-| 11 | `11-admin-payments.png` | Admin — Payments |
-| 12 | `12-admin-applepay.png` | Admin — Apple Pay |
 
 **Resolution:** 1290 × 2796 px (iPhone 15/16/17 Pro Max simulator captures are correct for 6.7" group).
 

@@ -41,7 +41,7 @@ public enum ScreenshotLaunchConfig {
         case "settings":
             signInUser(access: access, coordinator: coordinator)
             coordinator.activeTab = .settings
-        case "admin-overview", "admin-payments", "admin-applepay":
+        case "admin-overview", "admin-access", "admin-storage":
             signInAdmin(access: access, coordinator: coordinator)
             coordinator.activeTab = .admin
             UserDefaults.standard.set(adminSectionIndex(for: mode), forKey: "uitest_admin_section")
@@ -66,8 +66,8 @@ public enum ScreenshotLaunchConfig {
 
     private static func adminSectionIndex(for mode: String) -> Int {
         switch mode {
-        case "admin-payments": return 2
-        case "admin-applepay": return 4
+        case "admin-access": return 1
+        case "admin-storage": return 2
         default: return 0
         }
     }

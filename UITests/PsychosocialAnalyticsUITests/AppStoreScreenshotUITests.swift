@@ -27,10 +27,10 @@ final class AppStoreScreenshotUITests: XCTestCase {
         capture(name: "09-admin-overview")
         app.swipeUp()
         sleep(1)
-        capture(name: "10-admin-payments")
+        capture(name: "10-admin-access")
         app.swipeUp()
         sleep(1)
-        capture(name: "11-admin-apple-pay")
+        capture(name: "11-admin-storage")
     }
 
     private func saveScreenshot(_ name: String) {
@@ -45,7 +45,6 @@ final class AppStoreScreenshotUITests: XCTestCase {
     private func capture(name: String) {
         sleep(1)
         saveScreenshot(name)
-        // Also add as XCTAttachment for xcresult
         let shot = app.screenshot()
         let attachment = XCTAttachment(screenshot: shot)
         attachment.name = name

@@ -1,77 +1,39 @@
-# Upload to App Store Connect
+# Upload Psychosocial Analytics to App Store Connect
 
-Step-by-step guide to upload **Psychosocial Analytics** build `1.0.0 (1)`.
+Build **1.0.0 (4)** — free app, **no in-app purchases**.
 
 ## Prerequisites
 
-- [ ] Apple Developer Program active
-- [ ] App record created in [App Store Connect](https://appstoreconnect.apple.com)
-- [ ] Signing configured in Xcode (Team + Automatic signing)
-- [ ] IAP products created (see `CONFIGURATION.md`)
-- [ ] CI tests passed locally or on GitHub Actions
+- [ ] Apple Developer account with App Store Connect access
+- [ ] API key at `~/.appstoreconnect/private_keys/AuthKey_4B8M4ZHLMF.p8` (for automation script)
+- [ ] Xcode archive uploaded as build **4**
+- [ ] In-App Purchase products **removed** from the version in App Store Connect
 
-## Step 1 — Prepare metadata (copy from repo)
-
-| App Store Connect field | File |
-|-------------------------|------|
-| Description, subtitle, keywords | `AppStoreConnect/metadata.json` |
-| Review notes | `AppStoreConnect/review-notes.txt` |
-| Export compliance | `AppStoreConnect/export-compliance-responses.md` |
-| Privacy labels guide | `AppStoreConnect/privacy-nutrition-labels.json` |
-| TestFlight “What to Test” | `TestFlight/release-notes-1.0.0.md` |
-
-## Step 2 — Archive in Xcode
-
-1. Open `PsychosocialAnalytics.xcodeproj`
-2. Scheme: **PsychosocialAnalytics**
-3. Destination: **Any iOS Device (arm64)**
-4. **Product → Archive**
-5. When Organizer opens: **Distribute App**
-6. Choose **App Store Connect** → **Upload**
-7. Options: include bitcode off (default), upload symbols **on**, manage version **off** (use Xcode project version)
-
-Or export with CLI after archive:
+## Quick automation
 
 ```bash
-xcodebuild -exportArchive \
-  -archivePath ~/Library/Developer/Xcode/Archives/.../PsychosocialAnalytics.xcarchive \
-  -exportOptionsPlist App/PsychosocialAnalyticsApp/ExportOptions.plist \
-  -exportPath ./build/export
+cd "Psychosocial Analytics"
+./scripts/fix-submission-blockers.sh
+# After build 4 appears in ASC:
+python3 scripts/appstore_complete_submission.py --submit-only
 ```
 
-## Step 3 — Upload build
+## Manual checklist
 
-- In Organizer: **Distribute App → App Store Connect → Upload**
-- Wait for processing (15–60 minutes)
-- In App Store Connect → **TestFlight**: confirm build appears
-
-## Step 4 — Attach build to version
-
-1. App Store Connect → your app → **Distribution** → **iOS App**
-2. Create version **1.0.0** if needed
-3. Select the uploaded build
-4. Paste metadata from `metadata.json`
-5. Upload screenshots (see `screenshot-spec.md`)
-6. Answer export compliance: **No** (standard encryption only)
-7. Complete App Privacy questionnaire using `privacy-nutrition-labels.json`
-
-## Step 5 — Submit for review
-
-1. Add In-App Purchases to the version
-2. Set pricing and availability
-3. **Add for Review** → Submit
-
-## Step 6 — TestFlight (optional first)
-
-1. Internal testing group → add build
-2. Share `release-notes-1.0.0.md` as testing instructions
-3. After validation, promote same build to App Store review
+| Step | Action |
+|------|--------|
+| 1 | Archive in Xcode → Distribute → App Store Connect |
+| 2 | Select build **4** on the version |
+| 3 | Paste metadata from `submission-response.json` or run full script |
+| 4 | Upload screenshots (`scripts/capture-distribution-screenshots.sh`) |
+| 5 | Review notes: `AppStoreConnect/review-notes.txt` |
+| 6 | Resolution Center: paste `~/Desktop/PsychosocialAnalytics-AppStoreReviewReply-May30-2026.txt` if replying to IAP feedback |
+| 7 | **Add for Review** → Submit |
 
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
-| Missing compliance | Set `ITSAppUsesNonExemptEncryption` = false in Info.plist (already set) |
-| Invalid binary | Bump `CURRENT_PROJECT_VERSION` in `project.yml`, run `xcodegen`, re-archive |
-| IAP missing | Create product IDs in App Store Connect before submission |
-| Processing stuck | Wait 2h; re-upload with incremented build number |
+| Metadata mentions IAP | Re-run `appstore_complete_submission.py` after updating `submission-response.json` |
+| IAP still on version | App Store Connect → version → In-App Purchases → remove all |
+| Submit blocked | Attach non-expired build 4, complete App Privacy questionnaire |

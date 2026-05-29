@@ -1,11 +1,12 @@
 import SwiftUI
-import StoreKit
 
 public struct SettingsView: View {
     @StateObject private var coordinator = AppCoordinator.shared
     @StateObject private var env = AppEnvironment.shared
     @StateObject private var access = AccessControlService.shared
-    @StateObject private var payments = StoreKitPaymentService.shared
+    @State private var showDeleteAccountConfirm = false
+    @State private var showDeleteAccountFinalConfirm = false
+    @State private var isDeletingAccount = false
 
     public init() {}
 
@@ -39,7 +40,6 @@ public struct SettingsView: View {
                     }
                     .padding(.horizontal, 16)
 
-                    subscriptionSection
                     AdminAccessView()
                         .padding(.horizontal, 16)
 
@@ -65,16 +65,23 @@ public struct SettingsView: View {
 
                     PremiumTheme.cardStyle {
                         VStack(alignment: .leading, spacing: 12) {
-                            BrandedSectionTitle("Session")
-                            HStack {
-                                Label(access.currentUser.displayName, systemImage: "person.circle")
-                                    .font(.subheadline.weight(.medium))
-                                    .foregroundStyle(PremiumTheme.textPrimary)
-                                Spacer()
-                                Text(access.currentUser.role.displayName)
+                            BrandedSectionTitle("Account", subtitle: "Manage your session and data on this device")
+
+                            if !access.currentUser.email.isEmpty {
+                                HStack {
+                                    Label(access.currentUser.displayName, systemImage: "person.circle")
+                                        .font(.subheadline.weight(.medium))
+                                        .foregroundStyle(PremiumTheme.textPrimary)
+                                    Spacer()
+                                    Text(access.currentUser.role.displayName)
+                                        .font(.caption)
+                                        .foregroundStyle(PremiumTheme.emeraldLight)
+                                }
+                                Text(access.currentUser.email)
                                     .font(.caption)
-                                    .foregroundStyle(PremiumTheme.emeraldLight)
+                                    .foregroundStyle(PremiumTheme.textSecondary)
                             }
+
                             Button(role: .destructive) {
                                 withAnimation {
                                     coordinator.signOut()
@@ -85,9 +92,46 @@ public struct SettingsView: View {
                             }
                             .tint(PremiumTheme.danger)
                             .psychosocialSecondaryButton()
+
+                            Divider().overlay(PremiumTheme.border)
+
+                            Text("Deleting your account permanently removes your profile, assessments, clients, and uploads stored on this device.")
+                                .font(.caption)
+                                .foregroundStyle(PremiumTheme.textSecondary)
+
+                            Button(role: .destructive) {
+                                showDeleteAccountConfirm = true
+                            } label: {
+                                HStack {
+                                    if isDeletingAccount {
+                                        ProgressView().tint(PremiumTheme.danger)
+                                    }
+                                    Label("Delete Account", systemImage: "trash")
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
+                            .disabled(isDeletingAccount)
+                            .psychosocialSecondaryButton()
+                            .accessibilityIdentifier(AccessibilityID.buttonDeleteAccount)
                         }
                     }
                     .padding(.horizontal, 16)
+                    .alert("Delete account?", isPresented: $showDeleteAccountConfirm) {
+                        Button("Cancel", role: .cancel) {}
+                        Button("Continue", role: .destructive) {
+                            showDeleteAccountFinalConfirm = true
+                        }
+                    } message: {
+                        Text("This permanently deletes your account and all local app data. This cannot be undone.")
+                    }
+                    .alert("Confirm permanent deletion", isPresented: $showDeleteAccountFinalConfirm) {
+                        Button("Cancel", role: .cancel) {}
+                        Button("Delete Account", role: .destructive) {
+                            performAccountDeletion()
+                        }
+                    } message: {
+                        Text("Your profile, assessments, clients, and uploads on this device will be erased.")
+                    }
 
                     PremiumTheme.cardStyle {
                         VStack(alignment: .leading, spacing: 10) {
@@ -107,40 +151,7 @@ public struct SettingsView: View {
             .toolbar(.hidden, for: .navigationBar)
             .accessibilityIdentifier(AccessibilityID.screenSettings)
             .psychosocialScreen()
-            .task { await payments.loadProducts() }
         }
-    }
-
-    private var subscriptionSection: some View {
-        PremiumTheme.cardStyle {
-            VStack(alignment: .leading, spacing: 12) {
-                BrandedSectionTitle("Subscription", subtitle: "Apple In-App Purchase")
-                if payments.products.isEmpty {
-                    Text("Loading App Store products…")
-                        .font(.caption)
-                        .foregroundStyle(PremiumTheme.textSecondary)
-                } else {
-                    ForEach(payments.products, id: \.id) { product in
-                        Button {
-                            Task { try? await payments.purchase(product) }
-                        } label: {
-                            HStack {
-                                Text(product.displayName)
-                                Spacer()
-                                Text(product.displayPrice)
-                            }
-                        }
-                        .psychosocialSecondaryButton()
-                    }
-                }
-                Button("Restore purchases") {
-                    Task { await payments.restorePurchases() }
-                }
-                .accessibilityIdentifier(AccessibilityID.buttonRestorePurchases)
-                .psychosocialSecondaryButton()
-            }
-        }
-        .padding(.horizontal, 16)
     }
 
     private func settingsPill(_ label: String, _ value: String) -> some View {
@@ -163,5 +174,18 @@ public struct SettingsView: View {
 
     private var appBuild: String {
         Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+    }
+
+    private func performAccountDeletion() {
+        isDeletingAccount = true
+        do {
+            try AccountDeletionService.shared.deleteAccount()
+        } catch {
+            AppCoordinator.shared.showNotification(
+                "Could not delete account: \(error.localizedDescription)",
+                type: .error
+            )
+        }
+        isDeletingAccount = false
     }
 }

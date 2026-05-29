@@ -8,8 +8,7 @@ iOS application for psychosocial assessments, client caseload management, multi-
 - Client caseload dashboard and search
 - **Upload hub**: files, photo/video library, text notes, external URL import
 - **New client intake** with Supabase-primary storage
-- Role-based access (clinician / administrator) and subscription tiers
-- Apple In-App Purchases (StoreKit 2)
+- Role-based access (clinician / administrator) with configurable access tiers
 - Storage: **Supabase** (primary), **CloudKit/iCloud** and **Cloudflare** backups
 - Dark, accessible UI
 
@@ -32,7 +31,7 @@ Run on simulator: **⌘R** (scheme: `PsychosocialAnalytics`).
 
 ## Configuration
 
-See [CONFIGURATION.md](CONFIGURATION.md) for Supabase, Cloudflare, iCloud, and IAP product IDs.
+See [CONFIGURATION.md](CONFIGURATION.md) for Supabase, Cloudflare, and iCloud setup.
 
 ## Testing
 

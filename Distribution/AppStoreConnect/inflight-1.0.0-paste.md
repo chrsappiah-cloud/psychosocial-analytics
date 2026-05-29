@@ -6,7 +6,7 @@
 **Bundle ID:** `wcs.Psychosocial--Analytics`  
 **Marketing version / build:** `1.0.0` / `3` (uploaded & attached)
 
-Use this file to copy fields into the in-flight version. After pasting, attach build **1.0.0 (1)** from TestFlight once processing completes.
+Use this file to copy fields into the in-flight version. After pasting, attach build **1.0.0 (3)** from TestFlight once processing completes.
 
 ---
 
@@ -40,7 +40,7 @@ Initial release of Psychosocial Analytics for iOS.
 
 | Field | Paste value |
 |-------|-------------|
-| **Subtitle** (30 chars max) | Clinical caseload & psychosocial assessments |
+| **Subtitle** (30 chars max) | Caseload & assessments |
 | **Promotional Text** (170 chars) | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. |
 
 ### Description
@@ -53,7 +53,10 @@ Key features:
 • Upload hub: files, photos, videos, audio, text, and HTTPS URL imports
 • New client intake with secure cloud sync
 • Client search, caseload dashboard, and reporting views
-• Role-based access and Apple subscription support
+• Public / Administrator login with role-based access control
+• Admin panel: manage users, tiers, account status, and storage backends
+• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2
+• Apple Pay integration for one-time report purchases and consultation fees
 • Supabase primary storage with iCloud and Cloudflare backups
 • Dark, accessible interface for field use
 
@@ -78,7 +81,7 @@ psychosocial,social work,assessment,caseload,clinical,mental health,reports,appl
 
 ## Build
 
-1. **TestFlight** → wait for build `1.0.0 (1)` to finish processing.
+1. **TestFlight** → wait for build `1.0.0 (3)` to finish processing.
 2. On the in-flight version page → **Build** → **+** → select that build.
 3. If no build appears: archive again with bumped `CURRENT_PROJECT_VERSION` (see below).
 
@@ -170,8 +173,6 @@ Upload these files from `Distribution/screenshots/` in order:
 | 8 | `08-reports.png` |
 | 9 | `09-settings.png` |
 | 10 | `10-admin-overview.png` |
-| 11 | `11-admin-payments.png` |
-| 12 | `12-admin-applepay.png` |
 
 Full form field mapping: `FORM_RESPONSES.md`
 
@@ -181,7 +182,7 @@ Full form field mapping: `FORM_RESPONSES.md`
 
 - [ ] All localized metadata saved
 - [ ] Screenshots uploaded for 6.7" (and iPad if universal)
-- [ ] Build `1.0.0 (1)` selected
+- [ ] Build `1.0.0 (3)` selected
 - [ ] Export compliance answered
 - [ ] IAPs linked to version
 - [ ] App Privacy complete
@@ -195,7 +196,7 @@ Full form field mapping: `FORM_RESPONSES.md`
 Bump build number in `project.yml`:
 
 ```yaml
-CURRENT_PROJECT_VERSION: "2"
+CURRENT_PROJECT_VERSION: "4"
 ```
 
 Then:
@@ -205,4 +206,4 @@ xcodegen generate
 # Xcode: Product → Archive → Upload
 ```
 
-New binary will appear as `1.0.0 (2)` for the same in-flight version.
+New binary will appear as `1.0.0 (4)` for the same in-flight version.

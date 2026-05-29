@@ -1,4 +1,4 @@
-# TestFlight — Version 1.0.0 (1)
+# TestFlight — Version 1.0.0 (4)
 
 ## What to Test
 
@@ -8,8 +8,13 @@
 - **Upload → New Client**: save a new client record
 - Create a new assessment and complete psychosocial sections
 - Generate an AI report draft and confirm notification feedback
-- Settings → Subscription and Restore Purchases
-- Settings → Administrator panel (after debug promotion)
+- Settings → Administrator panel (admin@psychosocialanalytics.com / admin123)
+- Confirm **no** Subscription, Restore Purchases, Apple Pay, or payment screens appear
+
+## Build 4 changes
+
+- Removed all in-app purchases and Apple Pay
+- App is free; access tiers are administrator-assigned only
 
 ## Known limitations
 

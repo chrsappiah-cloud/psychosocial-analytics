@@ -17,13 +17,26 @@ final class UploadAccessTests: XCTestCase {
         XCTAssertFalse(access.can(.manageAccess))
     }
 
-    func testFreeTierCannotUpload() {
+    func testFreeTierCanUploadWhenActive() {
         let access = AccessControlService(
             currentUser: AppUserProfile(
                 email: "free@test.com",
                 displayName: "Free",
                 role: .user,
                 tier: .free
+            )
+        )
+        XCTAssertTrue(access.can(.uploadMedia))
+    }
+
+    func testInactiveAccountCannotUpload() {
+        let access = AccessControlService(
+            currentUser: AppUserProfile(
+                email: "inactive@test.com",
+                displayName: "Inactive",
+                role: .user,
+                tier: .professional,
+                isActive: false
             )
         )
         XCTAssertFalse(access.can(.uploadMedia))
@@ -39,7 +52,6 @@ final class UploadAccessTests: XCTestCase {
             )
         )
         XCTAssertTrue(access.can(.manageAccess))
-        XCTAssertTrue(access.can(.managePayments))
         XCTAssertTrue(access.can(.configureStorage))
     }
 

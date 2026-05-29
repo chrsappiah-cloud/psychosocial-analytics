@@ -21,7 +21,6 @@ public enum LoginTab: String, CaseIterable {
 
 public struct LoginView: View {
     @StateObject private var access = AccessControlService.shared
-    @StateObject private var payments = StoreKitPaymentService.shared
     @State private var selectedTab: LoginTab = .public
 
     @State private var email: String = ""
@@ -253,6 +252,7 @@ public struct LoginView: View {
         )
         access.updateEmail(email)
         access.updateDisplayName(name)
+        access.persistCurrentUser()
 
         isSubmitting = false
         onAuthenticated()
@@ -270,6 +270,7 @@ public struct LoginView: View {
                 access.promoteToAdministrator()
                 access.updateEmail(trimmedEmail)
                 access.updateDisplayName("Administrator")
+                access.persistCurrentUser()
                 isSubmitting = false
                 onAuthenticated()
             } else {

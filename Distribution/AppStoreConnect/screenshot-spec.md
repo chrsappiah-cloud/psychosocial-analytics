@@ -1,30 +1,20 @@
-# Screenshot specification — App Store Connect
+# App Store screenshot spec — v1.0.0 (build 4)
 
-Capture on **iPhone 15 Pro Max** or **iPhone 16 Pro Max** simulator (6.7" display group).
+6.7" iPhone (1290×2796). Capture with `./scripts/capture-distribution-screenshots.sh`.
 
-| # | Screen | Tab / action | Caption (optional) |
-|---|--------|--------------|-------------------|
-| 1 | Login screen | Launch → Public Access tab | Secure role-based sign-in |
-| 2 | Home dashboard | Home | Caseload at a glance |
-| 3 | Upload — Files & Media | Upload → Files | Upload text, audio, video, and documents |
-| 4 | Upload — New Client | Upload → New Client | Register new clients quickly |
-| 5 | Assessments list | Assess | Structured psychosocial assessments |
-| 6 | Assessment detail + AI | Assess → open → AI section | AI-assisted report drafts |
-| 7 | Settings + subscription | Settings | Plans and administrator controls |
-| 8 | Admin panel — Overview | Admin (shield icon) | Administrator dashboard overview |
-| 9 | Admin panel — Payments | Admin → Payments | Subscription & payment management |
-| 10 | Admin panel — Apple Pay | Admin → Apple Pay | One-time purchases via Apple Pay |
+| # | File | Screen |
+|---|------|--------|
+| 1 | `01-login.png` | Login |
+| 2 | `02-home.png` | Dashboard |
+| 3 | `03-upload.png` | Upload hub |
+| 4 | `04-upload-newclient.png` | Upload → New Client |
+| 5 | `05-assess.png` | Assessments |
+| 6 | `06-clients.png` | Clients |
+| 7 | `07-insights.png` | Insights |
+| 8 | `08-reports.png` | Reports |
+| 9 | `09-settings.png` | Settings (includes Delete Account) |
+| 10 | `10-admin-overview.png` | Admin → Overview |
 
-## iPad (if submitting universal)
+Do not use blank images. Do not show Payments, Apple Pay, or subscriptions.
 
-Use **13" iPad Pro** simulator: Home, Upload hub, Clients list, Admin panel.
-
-## Export
-
-```bash
-# Simulator screenshot: File → Save Screen Shot (⌘S)
-# Or:
-xcrun simctl io booted screenshot Distribution/screenshots/01-home.png
-```
-
-Store PNGs under `Distribution/screenshots/` (gitignored if large).
+iPad 13": `scripts/capture-ipad-screenshots.sh` → home, upload, clients, admin.

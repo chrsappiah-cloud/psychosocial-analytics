@@ -21,9 +21,6 @@ public enum SubscriptionTier: String, Codable, CaseIterable, Hashable, Sendable 
         rawValue.capitalized
     }
 
-    public var allowsUploads: Bool {
-        self != .free
-    }
 }
 
 public struct AppPermission: OptionSet, Codable, Sendable {
@@ -38,8 +35,7 @@ public struct AppPermission: OptionSet, Codable, Sendable {
     public static let manageAssessments = AppPermission(rawValue: 1 << 4)
     public static let viewReports = AppPermission(rawValue: 1 << 5)
     public static let manageAccess = AppPermission(rawValue: 1 << 6)
-    public static let managePayments = AppPermission(rawValue: 1 << 7)
-    public static let configureStorage = AppPermission(rawValue: 1 << 8)
+    public static let configureStorage = AppPermission(rawValue: 1 << 7)
 
     public static let standardUser: AppPermission = [
         .viewDashboard, .manageClients, .uploadMedia, .importFromURL,
@@ -48,7 +44,7 @@ public struct AppPermission: OptionSet, Codable, Sendable {
 
     public static let administrator: AppPermission = [
         .viewDashboard, .manageClients, .uploadMedia, .importFromURL,
-        .manageAssessments, .viewReports, .manageAccess, .managePayments, .configureStorage
+        .manageAssessments, .viewReports, .manageAccess, .configureStorage
     ]
 }
 

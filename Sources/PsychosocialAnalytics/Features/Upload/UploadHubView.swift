@@ -45,7 +45,7 @@ public struct UploadHubView: View {
             .accessibilityIdentifier(AccessibilityID.screenUpload)
             .psychosocialScreen()
             .overlay(alignment: .bottom) {
-                if !access.can(.uploadMedia) {
+                if !access.currentUser.isActive {
                     accessBanner
                 }
             }
@@ -60,7 +60,7 @@ public struct UploadHubView: View {
     }
 
     private var accessBanner: some View {
-        Text("Upgrade your subscription to upload media and import URLs.")
+        Text("Your account is inactive. Contact an administrator to restore upload access.")
             .font(.caption.weight(.medium))
             .foregroundStyle(PremiumTheme.textPrimary)
             .padding()

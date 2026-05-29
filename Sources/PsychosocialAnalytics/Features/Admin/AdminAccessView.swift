@@ -1,9 +1,7 @@
 import SwiftUI
-import StoreKit
 
 public struct AdminAccessView: View {
     @StateObject private var access = AccessControlService.shared
-    @StateObject private var payments = StoreKitPaymentService.shared
     @State private var storageStatuses: [StorageBackendStatus] = []
     @State private var selectedRole: AppRole = .user
     @State private var selectedTier: SubscriptionTier = .professional
@@ -18,7 +16,7 @@ public struct AdminAccessView: View {
             if access.isAdministrator {
                 adminContent
             } else {
-                Text("Administrator sign-in required for access and payment controls.")
+                Text("Administrator sign-in required for access controls.")
                     .foregroundStyle(PremiumTheme.textSecondary)
                     .padding()
             }
@@ -28,7 +26,6 @@ public struct AdminAccessView: View {
             selectedRole = access.currentUser.role
             selectedTier = access.currentUser.tier
             accountActive = access.currentUser.isActive
-            await payments.loadProducts()
         }
     }
 
@@ -42,7 +39,7 @@ public struct AdminAccessView: View {
                             Text(role.displayName).tag(role)
                         }
                     }
-                    Picker("Subscription tier", selection: $selectedTier) {
+                    Picker("Access tier", selection: $selectedTier) {
                         ForEach(SubscriptionTier.allCases, id: \.self) { tier in
                             Text(tier.displayName).tag(tier)
                         }
@@ -55,38 +52,6 @@ public struct AdminAccessView: View {
                     }
                     .psychosocialPrimaryButton()
                     .accessibilityIdentifier(AccessibilityID.buttonApplyAccess)
-                }
-            }
-
-            PremiumTheme.cardStyle {
-                VStack(alignment: .leading, spacing: 12) {
-                    BrandedSectionTitle("Apple In-App Purchases", subtitle: "StoreKit 2 subscriptions")
-                    if payments.isLoading {
-                        ProgressView()
-                    } else if payments.products.isEmpty {
-                        Text("Configure products in App Store Connect: \(productIDList)")
-                            .font(.caption)
-                            .foregroundStyle(PremiumTheme.textSecondary)
-                    } else {
-                        ForEach(payments.products, id: \.id) { product in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(product.displayName).font(.subheadline.weight(.semibold))
-                                    Text(product.description).font(.caption).foregroundStyle(PremiumTheme.textSecondary)
-                                }
-                                Spacer()
-                                Button(product.displayPrice) {
-                                    Task { try? await payments.purchase(product) }
-                                }
-                                .psychosocialSecondaryButton()
-                            }
-                        }
-                    }
-                    Button("Restore purchases") {
-                        Task { await payments.restorePurchases() }
-                    }
-                    .psychosocialSecondaryButton()
-                    .accessibilityIdentifier(AccessibilityID.buttonRestorePurchases)
                 }
             }
 
@@ -114,9 +79,5 @@ public struct AdminAccessView: View {
             .font(.caption)
             .foregroundStyle(PremiumTheme.textTertiary)
         }
-    }
-
-    private var productIDList: String {
-        SubscriptionProductID.allCases.map(\.rawValue).joined(separator: ", ")
     }
 }

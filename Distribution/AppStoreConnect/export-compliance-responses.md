@@ -1,6 +1,6 @@
 # App Store Connect — Export Compliance Responses
 
-Use these answers when submitting **Psychosocial Analytics** build `1.0.0 (1)`.
+Use these answers when submitting **Psychosocial Analytics** build `1.0.0 (4)`.
 
 ## Does your app use encryption?
 
@@ -27,4 +27,6 @@ Full privacy policy URL: `https://www.psychosocialanalytics.com/privacy`
 
 ## App Review notes (paste into Resolution Center if asked)
 
-> Psychosocial Analytics is a clinical documentation tool for social workers. Assessment data is stored locally. The AI draft feature returns simulated narrative text for clinician review; no PHI is sent to third-party AI in this build. Environment/API settings are visible only in Debug builds.
+> Build 4 removes all in-app purchases and Apple Pay. Psychosocial Analytics is a free clinical documentation tool for social workers. Assessment data is stored on-device. The AI draft feature returns simulated narrative text for clinician review; no PHI is sent to third-party AI in this build. Demo: Public tab — any email; Admin — admin@psychosocialanalytics.com / admin123.
+
+Full reply: `~/Desktop/PsychosocialAnalytics-AppStoreReviewReply-May30-2026.txt`

@@ -56,8 +56,8 @@ capture insights        "07-insights.png"
 capture reports         "08-reports.png"
 capture settings        "09-settings.png"
 capture admin-overview  "10-admin-overview.png"
-capture admin-payments  "11-admin-payments.png"
-capture admin-applepay  "12-admin-applepay.png"
+capture admin-access    "11-admin-access.png"
+capture admin-storage   "12-admin-storage.png"
 
 # Symlinks for submission-response.json legacy names
 ln -sf 03-upload.png "$DEST/03-upload-files.png" 2>/dev/null || cp "$DEST/03-upload.png" "$DEST/03-upload-files.png"
