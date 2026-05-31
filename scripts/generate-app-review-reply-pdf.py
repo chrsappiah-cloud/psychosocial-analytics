@@ -9,7 +9,7 @@ from fpdf import FPDF
 DESKTOP = Path.home() / "Desktop"
 SOURCE = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May31-2026.txt"
 OUTPUT = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May31-2026.pdf"
-SUBMISSION_ID = "72a127f7-1a12-443c-964c-b11a5ba400e7"
+SUBMISSION_ID = "b14ba558-cfc8-4d90-878d-3234594d2a7d"
 BUILD = "5"
 
 

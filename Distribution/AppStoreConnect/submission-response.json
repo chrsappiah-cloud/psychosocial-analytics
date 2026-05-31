@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "build": "5",
   "preparedDate": "2026-05-31",
-  "submissionId": "72a127f7-1a12-443c-964c-b11a5ba400e7",
+  "submissionId": "b14ba558-cfc8-4d90-878d-3234594d2a7d",
   "submissionFields": {
     "versionInfo": {
-      "whatsNew": "This update removes all in-app purchases, subscriptions, and Apple Pay. Psychosocial Analytics is now a completely free app.\n\n• Structured psychosocial assessments with section-based clinical workflow\n• Upload hub: files, media, pasted text, and HTTPS URL imports\n• New client intake with secure sync when configured\n• Caseload dashboard, client search, insights, and reports\n• AI-assisted report drafts (review before clinical use)\n• Public / Administrator login with role-based access control\n• Admin panel: user access control and storage monitoring\n• Dark, accessible interface for field use",
+      "whatsNew": "This update removes all in-app purchases, subscriptions, and Apple Pay. Psychosocial Analytics is now a completely free app.\n\n• Structured psychosocial assessments with section-based clinical workflow\n• Upload hub: files, media, pasted text, and HTTPS URL imports\n• New client intake with secure sync when configured\n• Caseload dashboard, client search, insights, and reports\n• AI-assisted report drafts (review before clinical use)\n• Account deletion in Settings\n• Public / Administrator login with role-based access control\n• Admin panel: user access control and storage monitoring\n• Dark, accessible interface for field use",
       "copyright": "© 2026 World Class Services"
     },
     "appInfo": {
       "subtitle": "Caseload & assessments",
       "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. Free app; no in-app purchases or subscriptions.",
-      "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, account status, and storage backends\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nThis app is free and does not offer in-app purchases, auto-renewable subscriptions, or Apple Pay.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
+      "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, account status, and storage backends\n• Account deletion: Settings → Account → Delete Account\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nThis app is free and does not offer in-app purchases, auto-renewable subscriptions, or Apple Pay.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
       "keywords": "psychosocial,social work,assessment,caseload,clinical,mental health,reports,admin panel"
     },
     "urls": {
@@ -26,7 +26,7 @@
       "demoAccountName": "admin@psychosocialanalytics.com",
       "demoAccountPassword": "admin123",
       "contactEmail": "support@psychosocialanalytics.com",
-      "notes": "Psychosocial Analytics — App Review Notes (v1.0.0, build 5)\n\nSubmission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7\n\nFREE APP — NO IAP OR SUBSCRIPTIONS: All in-app purchases, auto-renewable subscriptions, Apple Pay, and Restore Purchases have been removed. There are no StoreKit products and no payment UI. Please remove any IAP products from this version in App Store Connect.\n\nACCOUNT DELETION: Settings → Account → Delete Account (two-step confirmation).\n\nSign-in: Public tab — any email; Administrator — admin@psychosocialanalytics.com / admin123\nAdmin panel: Overview, Access, Storage only.\nAI drafts simulated on-device; no PHI to third-party AI.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+      "notes": "Psychosocial Analytics — App Review Notes (v1.0.0, build 5)\n\nSubmission ID: b14ba558-cfc8-4d90-878d-3234594d2a7d\n\nFREE APP — NO IAP OR SUBSCRIPTIONS: All in-app purchases, subscriptions, Apple Pay, and Restore Purchases removed. No StoreKit products or payment UI. Remove any IAP products from this version.\n\nSCREENSHOTS (2.3.3): Updated set shows app in use (Dashboard, Upload, Assessments, Clients, etc.). No login splash as lead screenshot. Settings screenshot shows Delete Account.\n\nACCOUNT DELETION (5.1.1(v)): Settings → Account → Delete Account → confirm twice. Permanently deletes profile and all local data on device.\n\nSign-in: Public tab — any email; Administrator — admin@psychosocialanalytics.com / admin123\nAdmin panel: Overview, Access, Storage only.\nAI drafts simulated on-device; no PHI to third-party AI.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
     },
     "exportCompliance": {
       "usesEncryption": true,
@@ -38,25 +38,25 @@
       "iphone": {
         "displayGroup": "6.7\"",
         "files": [
-          "Distribution/screenshots/01-login.png",
-          "Distribution/screenshots/02-home.png",
-          "Distribution/screenshots/03-upload.png",
-          "Distribution/screenshots/04-upload-newclient.png",
-          "Distribution/screenshots/05-assess.png",
-          "Distribution/screenshots/06-clients.png",
-          "Distribution/screenshots/07-insights.png",
-          "Distribution/screenshots/08-reports.png",
-          "Distribution/screenshots/09-settings.png",
-          "Distribution/screenshots/10-admin-overview.png"
+          "Distribution/screenshots/appstore-ready/01-home.png",
+          "Distribution/screenshots/appstore-ready/02-upload.png",
+          "Distribution/screenshots/appstore-ready/03-upload-newclient.png",
+          "Distribution/screenshots/appstore-ready/04-assess.png",
+          "Distribution/screenshots/appstore-ready/05-clients.png",
+          "Distribution/screenshots/appstore-ready/06-insights.png",
+          "Distribution/screenshots/appstore-ready/07-reports.png",
+          "Distribution/screenshots/appstore-ready/08-settings-account.png",
+          "Distribution/screenshots/appstore-ready/09-admin-overview.png",
+          "Distribution/screenshots/appstore-ready/10-admin-storage.png"
         ]
       },
       "ipad": {
         "displayGroup": "13\"",
         "files": [
-          "Distribution/screenshots/ipad/01-home.png",
-          "Distribution/screenshots/ipad/02-upload.png",
-          "Distribution/screenshots/ipad/03-clients.png",
-          "Distribution/screenshots/ipad/04-admin.png"
+          "Distribution/screenshots/ipad/appstore-ready/01-home.png",
+          "Distribution/screenshots/ipad/appstore-ready/02-upload.png",
+          "Distribution/screenshots/ipad/appstore-ready/03-clients.png",
+          "Distribution/screenshots/ipad/appstore-ready/04-admin.png"
         ]
       }
     }

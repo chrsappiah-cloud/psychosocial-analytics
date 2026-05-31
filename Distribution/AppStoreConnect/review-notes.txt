@@ -1,31 +1,24 @@
 Psychosocial Analytics — App Review Notes (v1.0.0, build 5)
 
-Submission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7
+Submission ID: b14ba558-cfc8-4d90-878d-3234594d2a7d
 
 FREE APP — NO IN-APP PURCHASES OR SUBSCRIPTIONS
-This build removes all StoreKit products, Apple Pay, Restore Purchases, and payment UI. There are no auto-renewable subscriptions. Do not attach any IAP products to this version.
+All StoreKit, Apple Pay, subscription screens, and Restore Purchases removed. No IAP products on this version.
+
+SCREENSHOTS (Guideline 2.3.3)
+Updated screenshots show the app in use: Dashboard, Upload, Assessments, Clients, Insights, Reports, Settings (Delete Account visible), Admin. Login is not the lead screenshot.
 
 Sign-in (required):
-- Public Access tab: enter any email and optional display name → Sign In (clinician role).
-- Administrator tab: admin@psychosocialanalytics.com / admin123 → full admin panel.
+- Public Access tab: enter any email → Sign In
+- Administrator tab: admin@psychosocialanalytics.com / admin123
 
-Admin panel (shield tab, administrator only):
-- Overview: session and storage summary
-- Access: assign role (Clinician / Administrator) and active status
-- Storage: backend connection status (Supabase, iCloud, Cloudflare when configured)
+ACCOUNT DELETION (Guideline 5.1.1(v)):
+Settings → Account → Delete Account → confirm twice. Permanently removes profile and all local data on device.
 
-Upload tab: files, photo/video library, pasted text, HTTPS URL import, New Client intake.
+Admin panel: Overview, Access, Storage only (no Payments tab).
 
-Assessments: structured sections; AI draft returns simulated narrative text for clinician review only. No PHI is sent to third-party AI in this build.
-
-Legal links (also in App Description):
+Legal:
 - Privacy Policy: https://www.psychosocialanalytics.com/privacy
-- Terms of Use (standard Apple EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
-
-Account deletion (Guideline 5.1.1(v)):
-- Settings → Account → Delete Account → confirm twice
-- Permanently removes profile and all local assessments, clients, and uploads on this device
-
-Export compliance: standard HTTPS/TLS only (ITSAppUsesNonExemptEncryption = false).
+- Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 Contact: support@psychosocialanalytics.com

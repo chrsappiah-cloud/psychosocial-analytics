@@ -41,6 +41,10 @@ public enum ScreenshotLaunchConfig {
         case "settings":
             signInUser(access: access, coordinator: coordinator)
             coordinator.activeTab = .settings
+        case "settings-account":
+            signInUser(access: access, coordinator: coordinator)
+            coordinator.activeTab = .settings
+            UserDefaults.standard.set(true, forKey: "uitest_scroll_settings_delete")
         case "admin-overview", "admin-access", "admin-storage":
             signInAdmin(access: access, coordinator: coordinator)
             coordinator.activeTab = .admin

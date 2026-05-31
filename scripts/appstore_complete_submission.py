@@ -18,8 +18,8 @@ SCREENSHOTS = ROOT / "Distribution/screenshots/appstore-ready"
 RAW_SCREENSHOTS = ROOT / "Distribution/screenshots"
 
 ISSUER_ID = "70c46c69-5d6d-438d-b300-31df2b93163a"
-KEY_ID = "4B8M4ZHLMF"
-KEY_PATH = Path.home() / ".appstoreconnect/private_keys/AuthKey_4B8M4ZHLMF.p8"
+KEY_ID = "L3Q98J38HJ"
+KEY_PATH = Path.home() / ".appstoreconnect/private_keys/AuthKey_L3Q98J38HJ.p8"
 
 APP_ID = "6768490648"
 VERSION_ID = "f1cefa6e-6302-428d-bbc6-5142c346f2ba"
@@ -30,16 +30,16 @@ APP_INFO_LOC_ID = None  # resolved at runtime
 # App Store Connect allows max 10 screenshots per display size.
 # Order matches Distribution/AppStoreConnect/FORM_RESPONSES.md (slots 1–10).
 SCREENSHOT_ORDER = [
-    "01-login.png",
-    "02-home.png",
-    "03-upload.png",
-    "04-upload-newclient.png",
-    "05-assess.png",
-    "06-clients.png",
-    "07-insights.png",
-    "08-reports.png",
-    "09-settings.png",
-    "10-admin-overview.png",
+    "01-home.png",
+    "02-upload.png",
+    "03-upload-newclient.png",
+    "04-assess.png",
+    "05-clients.png",
+    "06-insights.png",
+    "07-reports.png",
+    "08-settings-account.png",
+    "09-admin-overview.png",
+    "10-admin-storage.png",
 ]
 
 DISPLAY_TYPE = "APP_IPHONE_67"
@@ -425,25 +425,100 @@ def verify_pricing(client: ASCClient) -> None:
         print("⚠ No manual price on schedule — set Free in App Store Connect → Pricing and Availability")
 
 
+def attach_build(client: ASCClient, build_version: str = "5") -> None:
+    builds = client.get(
+        f"https://api.appstoreconnect.apple.com/v1/builds"
+        f"?filter[app]={APP_ID}&filter[version]={build_version}&limit=5&sort=-uploadedDate"
+    )
+    data = builds.get("data") or []
+    if not data:
+        print(f"⚠ Build {build_version} not found on App Store Connect yet — upload IPA first")
+        return
+    build_id = data[0]["id"]
+    state = data[0]["attributes"].get("processingState")
+    client.patch(
+        f"https://api.appstoreconnect.apple.com/v1/appStoreVersions/{VERSION_ID}",
+        {
+            "data": {
+                "type": "appStoreVersions",
+                "id": VERSION_ID,
+                "relationships": {"build": {"data": {"type": "builds", "id": build_id}}},
+            }
+        },
+    )
+    print(f"✓ Attached build {build_version} ({build_id}, state={state}) to version 1.0")
+
+
 def submit_for_review(client: ASCClient) -> None:
+    """Submit via reviewSubmissions API (appStoreVersionSubmissions is retired)."""
     try:
-        client.post(
-            "https://api.appstoreconnect.apple.com/v1/appStoreVersionSubmissions",
+        existing = client.get(
+            "https://api.appstoreconnect.apple.com/v1/reviewSubmissions"
+            f"?filter[app]={APP_ID}&filter[platform]=IOS&limit=10"
+        )
+        submission_id = None
+        for item in existing.get("data", []):
+            state = item.get("attributes", {}).get("state")
+            if state == "UNRESOLVED_ISSUES":
+                submission_id = item["id"]
+                print(f"✓ Resubmitting existing review {submission_id} (UNRESOLVED_ISSUES)")
+                break
+        if not submission_id:
+            for item in existing.get("data", []):
+                state = item.get("attributes", {}).get("state")
+                if state in ("READY_FOR_REVIEW", "WAITING_FOR_REVIEW"):
+                    submission_id = item["id"]
+                    print(f"✓ Using review submission {submission_id} ({state})")
+                    break
+
+        if not submission_id:
+            created = client.post(
+                "https://api.appstoreconnect.apple.com/v1/reviewSubmissions",
+                {
+                    "data": {
+                        "type": "reviewSubmissions",
+                        "attributes": {"platform": "IOS"},
+                        "relationships": {
+                            "app": {"data": {"type": "apps", "id": APP_ID}}
+                        },
+                    }
+                },
+            )
+            submission_id = created["data"]["id"]
+            print(f"✓ Created review submission {submission_id}")
+
+            client.post(
+                "https://api.appstoreconnect.apple.com/v1/reviewSubmissionItems",
+                {
+                    "data": {
+                        "type": "reviewSubmissionItems",
+                        "relationships": {
+                            "appStoreVersion": {
+                                "data": {"type": "appStoreVersions", "id": VERSION_ID}
+                            },
+                            "reviewSubmission": {
+                                "data": {"type": "reviewSubmissions", "id": submission_id}
+                            },
+                        },
+                    }
+                },
+            )
+            print("✓ Attached version 1.0 to review submission")
+
+        client.patch(
+            f"https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{submission_id}",
             {
                 "data": {
-                    "type": "appStoreVersionSubmissions",
-                    "relationships": {
-                        "appStoreVersion": {
-                            "data": {"type": "appStoreVersions", "id": VERSION_ID}
-                        }
-                    },
+                    "type": "reviewSubmissions",
+                    "id": submission_id,
+                    "attributes": {"submitted": True},
                 }
             },
         )
-        print("✓ Submitted for App Review")
+        print("✓ Submitted for App Review (reviewSubmissions API)")
     except RuntimeError as err:
         print(f"⚠ Submit blocked: {err}")
-        print("  Attach a non-expired build in App Store Connect, then re-run with --submit-only")
+        print("  Reply in Resolution Center, then click Add for Review in App Store Connect.")
 
 
 def main() -> int:
@@ -453,6 +528,7 @@ def main() -> int:
     ipad_only = "--ipad-screenshots-only" in args
     fix_only = "--fix-requirements" in args
     all_screenshots = "--all-screenshots" in args
+    do_attach_build = "--attach-build" in args
     client = ASCClient()
 
     if fix_only:
@@ -465,7 +541,11 @@ def main() -> int:
         upload_ipad_screenshots(client)
     elif screenshots_only:
         upload_screenshots(client)
-    elif not submit_only:
+    elif submit_only:
+        pass
+    elif do_attach_build:
+        attach_build(client)
+    else:
         fix_submission_requirements(client)
         update_metadata(client)
         ensure_review_detail(client)
@@ -473,7 +553,11 @@ def main() -> int:
         upload_ipad_screenshots(client)
         verify_pricing(client)
 
+    if do_attach_build:
+        attach_build(client)
+
     if "--submit-only" in args or "--submit" in args:
+        attach_build(client)
         submit_for_review(client)
 
     print("\nDone. Check: https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight")

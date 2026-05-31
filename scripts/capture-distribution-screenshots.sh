@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Captures App Store Connect screenshots (6.7") via simulator launch modes.
+# Captures App Store Connect screenshots (6.7") — core app in use (no login splash).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -7,7 +7,7 @@ DEST="$ROOT/Distribution/screenshots"
 DEVICE="${SIMULATOR_DEVICE:-iPhone 17 Pro Max}"
 BUNDLE="wcs.Psychosocial--Analytics"
 
-mkdir -p "$DEST" "$DEST/ipad"
+mkdir -p "$DEST" "$DEST/appstore-ready"
 cd "$ROOT"
 
 xcodegen generate >/dev/null
@@ -32,37 +32,25 @@ capture() {
   local file="$2"
   xcrun simctl terminate booted "$BUNDLE" 2>/dev/null || true
   sleep 1
-  if [ "$mode" = "login" ]; then
-    xcrun simctl launch booted "$BUNDLE"
-  else
-    xcrun simctl launch booted "$BUNDLE" "--screenshot=${mode}"
-  fi
+  xcrun simctl launch booted "$BUNDLE" "--screenshot=${mode}"
   sleep 3
   xcrun simctl io booted screenshot "$DEST/${file}"
-  # App Store 6.7" requires 1290×2796 (simulator captures are ~2064×2752)
-  mkdir -p "$DEST/appstore-ready"
   sips -z 2796 1290 "$DEST/${file}" --out "$DEST/appstore-ready/${file}" >/dev/null
-  echo "  ✓ ${file} (resized to 1290×2796)"
+  echo "  ✓ ${file} (1290×2796)"
 }
 
-echo "Capturing iPhone 6.7\" screenshots..."
-capture login           "01-login.png"
-capture home            "02-home.png"
-capture upload          "03-upload.png"
-capture upload-newclient "04-upload-newclient.png"
-capture assess          "05-assess.png"
-capture clients         "06-clients.png"
-capture insights        "07-insights.png"
-capture reports         "08-reports.png"
-capture settings        "09-settings.png"
-capture admin-overview  "10-admin-overview.png"
-capture admin-access    "11-admin-access.png"
-capture admin-storage   "12-admin-storage.png"
-
-# Symlinks for submission-response.json legacy names
-ln -sf 03-upload.png "$DEST/03-upload-files.png" 2>/dev/null || cp "$DEST/03-upload.png" "$DEST/03-upload-files.png"
-ln -sf 05-assess.png "$DEST/04-assess.png" 2>/dev/null || true
+echo "Capturing iPhone 6.7\" screenshots (app in use — Guideline 2.3.3)..."
+capture home              "01-home.png"
+capture upload            "02-upload.png"
+capture upload-newclient  "03-upload-newclient.png"
+capture assess            "04-assess.png"
+capture clients           "05-clients.png"
+capture insights          "06-insights.png"
+capture reports           "07-reports.png"
+capture settings-account  "08-settings-account.png"
+capture admin-overview    "09-admin-overview.png"
+capture admin-storage     "10-admin-storage.png"
 
 echo ""
-echo "Screenshots ready: $DEST"
-ls -la "$DEST"/*.png 2>/dev/null | awk '{print "  " $NF}'
+echo "Screenshots ready: $DEST/appstore-ready"
+ls -la "$DEST/appstore-ready"/*.png 2>/dev/null | awk '{print "  " $NF}'

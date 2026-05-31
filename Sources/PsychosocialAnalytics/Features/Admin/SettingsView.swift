@@ -12,6 +12,7 @@ public struct SettingsView: View {
 
     public var body: some View {
         NavigationStack {
+            ScrollViewReader { scrollProxy in
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 20) {
                     AppBrandHeader(style: .compact, screenTitle: "Settings")
@@ -112,6 +113,7 @@ public struct SettingsView: View {
                             .disabled(isDeletingAccount)
                             .psychosocialSecondaryButton()
                             .accessibilityIdentifier(AccessibilityID.buttonDeleteAccount)
+                            .id("delete_account_anchor")
                         }
                     }
                     .padding(.horizontal, 16)
@@ -149,6 +151,17 @@ public struct SettingsView: View {
                     .padding(.horizontal, 16)
                 }
                 .padding(.bottom, 24)
+            }
+            .onAppear {
+                if UserDefaults.standard.bool(forKey: "uitest_scroll_settings_delete") {
+                    UserDefaults.standard.removeObject(forKey: "uitest_scroll_settings_delete")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        withAnimation {
+                            scrollProxy.scrollTo("delete_account_anchor", anchor: .center)
+                        }
+                    }
+                }
+            }
             }
             .toolbar(.hidden, for: .navigationBar)
             .accessibilityIdentifier(AccessibilityID.screenSettings)

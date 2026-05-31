@@ -1,57 +1,67 @@
 Psychosocial Analytics — App Store Review Reply
-Submission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7
+Submission ID: b14ba558-cfc8-4d90-878d-3234594d2a7d
 Version 1.0.0 (Build 5)
 31 May 2026
 
 Dear App Review Team,
 
-Thank you for your review. We have fully removed all in-app purchases, auto-renewable subscriptions, Apple Pay, and StoreKit payment flows from Psychosocial Analytics. The app is now a free clinical documentation tool with no monetization.
+Thank you for the detailed feedback on submission b14ba558. We have addressed every issue below in build 5 and updated all App Store metadata and screenshots.
 
 ----------------------------------------------------------------------
-GUIDELINE 2.1(b) — IN-APP PURCHASE PRODUCTS NOT SUBMITTED
-----------------------------------------------------------------------
-
-Resolution:
-- Psychosocial Analytics no longer offers any In-App Purchases.
-- We removed StoreKit, subscription screens, payment UI, and Restore Purchases from the app binary (build 5).
-- We removed all IAP products from this App Store version in App Store Connect.
-- There are no IAP products to submit for review because the app is free.
-
-We respectfully ask you to review build 5, which contains no references to purchasable subscriptions or payment flows.
-
-----------------------------------------------------------------------
-GUIDELINE 3.1.2(c) — AUTO-RENEWABLE SUBSCRIPTION METADATA
+GUIDELINE 2.3.3 — ACCURATE METADATA (SCREENSHOTS)
 ----------------------------------------------------------------------
 
 Resolution:
-- Psychosocial Analytics does NOT offer auto-renewable subscriptions.
-- SubscriptionStoreView and all subscription purchase flows have been removed.
-- The app does not display subscription titles, lengths, prices, or renewal terms because there are no subscriptions.
+- Removed the login screen from the screenshot set. Login/splash screens are not representative of the app in use.
+- Uploaded 10 new iPhone 6.7" screenshots showing core functionality: Dashboard, Upload, New Client intake, Assessments, Clients, Insights, Reports, Settings (with Delete Account visible), and Admin panels.
+- Uploaded 4 new iPad 13" screenshots: Home, Upload, Clients, Admin.
+- All screenshots were captured from the running app on simulator and resized to App Store required dimensions.
 
-Metadata updated for build 5:
-- Privacy Policy (functional): https://www.psychosocialanalytics.com/privacy
-- Terms of Use (standard Apple EULA, linked in App Description): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
-- App Description states clearly: "This app is free and does not offer in-app purchases or Apple Pay."
+----------------------------------------------------------------------
+GUIDELINE 2.1(b) — IN-APP PURCHASES NOT SUBMITTED / LOADING INDEFINITELY
+----------------------------------------------------------------------
 
-App Review Notes for build 5 also confirm: free app, no IAP, no subscription UI.
+Resolution:
+- Psychosocial Analytics no longer offers any In-App Purchases, auto-renewable subscriptions, or Apple Pay.
+- We removed all StoreKit code, payment UI, subscription screens, and Restore Purchases from the app binary (build 5).
+- We removed all IAP products from this App Store version in App Store Connect (IAP count: 0).
+- The previous "loading indefinitely" issue is resolved because payment flows no longer exist.
+
+There are no IAP products to submit for review. Please review build 5 as a free app.
+
+----------------------------------------------------------------------
+GUIDELINE 5.1.1(v) — ACCOUNT DELETION
+----------------------------------------------------------------------
+
+Resolution:
+- Account deletion is implemented in Settings → Account → Delete Account.
+- Two-step confirmation is required before permanent deletion.
+- Deletion permanently removes the user profile and all local data (assessments, clients, uploads) on the device.
+
+How to test:
+1. Public Access tab: sign in with any email.
+2. Go to Settings tab.
+3. Scroll to Account section.
+4. Tap Delete Account → Continue → Delete Account.
+5. App signs out and all local data is erased.
+
+Screenshot #8 in the updated set shows the Delete Account button. A screen recording demonstrating the full flow is noted in App Review Information for future submissions.
 
 ----------------------------------------------------------------------
 HOW TO TEST (build 5)
 ----------------------------------------------------------------------
 
 Sign-in:
-- Public Access tab: enter any email → Sign In (clinician).
-- Administrator tab: admin@psychosocialanalytics.com / admin123
+- Public Access: any email → Sign In
+- Administrator: admin@psychosocialanalytics.com / admin123
 
-Verify no payments:
-- No Subscription, Payments, Restore Purchases, or Apple Pay screens exist.
-- Admin panel tabs: Overview, Access, Storage only (no Payments tab).
-- Settings → Support shows Privacy Policy link only (no subscription management).
+Verify:
+- No Subscription, Payments, Restore Purchases, or Apple Pay screens
+- Admin panel: Overview, Access, Storage only
+- Account deletion: Settings → Account → Delete Account
 
-Account deletion (5.1.1(v)):
-- Settings → Account → Delete Account → confirm twice.
-
-AI drafts are simulated on-device; no PHI sent to third-party AI.
+Privacy Policy: https://www.psychosocialanalytics.com/privacy
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 Contact: support@psychosocialanalytics.com
 
