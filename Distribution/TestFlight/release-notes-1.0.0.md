@@ -1,4 +1,4 @@
-# TestFlight — Version 1.0.0 (4)
+# TestFlight — Version 1.0.0 (5)
 
 ## What to Test
 
@@ -11,10 +11,10 @@
 - Settings → Administrator panel (admin@psychosocialanalytics.com / admin123)
 - Confirm **no** Subscription, Restore Purchases, Apple Pay, or payment screens appear
 
-## Build 4 changes
+## Build 5 changes
 
-- Removed all in-app purchases and Apple Pay
-- App is free; access tiers are administrator-assigned only
+- Removed all in-app purchases, subscriptions, and Apple Pay
+- App is completely free with role-based access only
 
 ## Known limitations
 
