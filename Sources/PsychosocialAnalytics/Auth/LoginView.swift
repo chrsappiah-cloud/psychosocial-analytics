@@ -247,7 +247,6 @@ public struct LoginView: View {
 
         access.updateUser(
             role: selectedRole,
-            tier: .professional,
             isActive: true
         )
         access.updateEmail(email)

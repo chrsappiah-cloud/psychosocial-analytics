@@ -24,8 +24,7 @@ public final class AccessControlService: ObservableObject {
             resolved = AppUserProfile(
                 email: "clinician@psychosocialanalytics.com",
                 displayName: "Clinical User",
-                role: .user,
-                tier: .professional
+                role: .user
             )
         }
         self.currentUser = resolved
@@ -45,7 +44,6 @@ public final class AccessControlService: ObservableObject {
             email: "",
             displayName: "",
             role: .user,
-            tier: .free,
             isActive: true
         )
         permissions = Self.permissions(for: currentUser)
@@ -73,17 +71,15 @@ public final class AccessControlService: ObservableObject {
         }
     }
 
-    public func updateUser(role: AppRole, tier: SubscriptionTier, isActive: Bool) {
+    public func updateUser(role: AppRole, isActive: Bool) {
         guard isAdministrator else { return }
         currentUser.role = role
-        currentUser.tier = tier
         currentUser.isActive = isActive
         permissions = Self.permissions(for: currentUser)
     }
 
     public func promoteToAdministrator() {
         currentUser.role = .administrator
-        currentUser.tier = .enterprise
         permissions = Self.permissions(for: currentUser)
     }
 

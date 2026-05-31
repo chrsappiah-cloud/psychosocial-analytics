@@ -12,17 +12,6 @@ public enum AppRole: String, Codable, CaseIterable, Hashable, Sendable {
     }
 }
 
-public enum SubscriptionTier: String, Codable, CaseIterable, Hashable, Sendable {
-    case free
-    case professional
-    case enterprise
-
-    public var displayName: String {
-        rawValue.capitalized
-    }
-
-}
-
 public struct AppPermission: OptionSet, Codable, Sendable {
     public let rawValue: Int
 
@@ -53,7 +42,6 @@ public struct AppUserProfile: Codable, Sendable, Identifiable {
     public var email: String
     public var displayName: String
     public var role: AppRole
-    public var tier: SubscriptionTier
     public var isActive: Bool
 
     public init(
@@ -61,14 +49,12 @@ public struct AppUserProfile: Codable, Sendable, Identifiable {
         email: String,
         displayName: String,
         role: AppRole = .user,
-        tier: SubscriptionTier = .free,
         isActive: Bool = true
     ) {
         self.id = id
         self.email = email
         self.displayName = displayName
         self.role = role
-        self.tier = tier
         self.isActive = isActive
     }
 }

@@ -3,7 +3,7 @@
 **App ID:** `6768490648`  
 **In-flight version:** https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight  
 **Bundle ID:** `wcs.Psychosocial--Analytics`  
-**Version / build:** `1.0.0` / `3`
+**Version / build:** `1.0.0` / `4`
 
 Machine-readable copy: `submission-response.json`  
 Screenshots folder: `Distribution/screenshots/` (run `./scripts/capture-distribution-screenshots.sh`)
@@ -20,7 +20,7 @@ Screenshots folder: `Distribution/screenshots/` (run `./scripts/capture-distribu
 ### What's New in This Version
 
 ```
-Initial release of Psychosocial Analytics for iOS.
+This update removes all in-app purchases and Apple Pay. Psychosocial Analytics is now a free app.
 
 • Structured psychosocial assessments with section-based clinical workflow
 • Upload hub: files, media, pasted text, and HTTPS URL imports
@@ -28,9 +28,7 @@ Initial release of Psychosocial Analytics for iOS.
 • Caseload dashboard, client search, insights, and reports
 • AI-assisted report drafts (review before clinical use)
 • Public / Administrator login with role-based access control
-• Admin panel: user management, subscription control, storage monitoring
-• Apple In-App Purchases (StoreKit 2): Professional / Enterprise subscriptions
-• Apple Pay integration for one-time report purchases and consultation fees
+• Admin panel: user access control and storage monitoring (no payments)
 • Dark, accessible interface for field use
 ```
 
@@ -42,7 +40,7 @@ Initial release of Psychosocial Analytics for iOS.
 |------------|-----|----------|
 | **Name** | — | Psychosocial Analytics |
 | **Subtitle** | 30 | Caseload & assessments |
-| **Promotional Text** | 170 | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. |
+| **Promotional Text** | 170 | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. Free app; no in-app purchases. |
 
 ### Description
 
@@ -55,18 +53,18 @@ Key features:
 • New client intake with secure cloud sync
 • Client search, caseload dashboard, and reporting views
 • Public / Administrator login with role-based access control
-• Admin panel: manage users, tiers, account status, and storage backends
-• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2
-• Apple Pay integration for one-time report purchases and consultation fees
+• Admin panel: manage users, account status, and storage backends
 • Supabase primary storage with iCloud and Cloudflare backups
 • Dark, accessible interface for field use
+
+This app is free and does not offer in-app purchases or Apple Pay.
 
 Review all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.
 ```
 
 | Form field | Response |
 |------------|----------|
-| **Keywords** | psychosocial,social work,assessment,caseload,clinical,mental health,reports,apple pay,admin panel |
+| **Keywords** | psychosocial,social work,assessment,caseload,clinical,mental health,reports,admin panel |
 | **Support URL** | https://www.psychosocialanalytics.com/support |
 | **Marketing URL** | https://www.psychosocialanalytics.com |
 | **Privacy Policy URL** | https://www.psychosocialanalytics.com/privacy |
@@ -87,7 +85,7 @@ Upload in this order (files in `Distribution/screenshots/`):
 | 6 | `06-clients.png` | Clients |
 | 7 | `07-insights.png` | Insights metrics |
 | 8 | `08-reports.png` | Reports |
-| 9 | `09-settings.png` | Settings & subscriptions |
+| 9 | `09-settings.png` | Settings |
 | 10 | `10-admin-overview.png` | Admin — Overview |
 
 **Resolution:** 1290 × 2796 px (iPhone 15/16/17 Pro Max simulator captures are correct for 6.7" group).
@@ -104,15 +102,17 @@ Upload in this order (files in `Distribution/screenshots/`):
 | **Notes** | See `review-notes.txt` (full text below) |
 
 ```
-Psychosocial Analytics — App Review Notes (v1.0.0)
+Psychosocial Analytics — App Review Notes (v1.0.0, build 4)
+
+IAP REMOVED: No in-app purchases, Apple Pay, or Restore Purchases. App is free.
+
+ACCOUNT DELETION: Settings → Account → Delete Account (two-step confirmation).
 
 - Public login: enter any email to sign in as a clinician user.
 - Administrator login: admin@psychosocialanalytics.com / admin123 for full admin panel.
-- Admin panel includes Overview, Access Control, Payments, Storage, and Apple Pay sections.
-- Apple Pay uses PassKit with merchant ID merchant.com.wcs.psychosocialanalytics.
+- Admin panel includes Overview, Access Control, and Storage only.
 - Upload tab supports files, photos, video, text, and HTTPS URL imports.
 - AI drafts are simulated; no PHI sent to third-party AI.
-- Subscriptions use StoreKit 2 (Professional / Enterprise).
 - Export compliance: standard HTTPS only (ITSAppUsesNonExemptEncryption = false).
 
 Contact: support@psychosocialanalytics.com
@@ -169,15 +169,9 @@ Detail mapping: `privacy-nutrition-labels.json`
 
 ---
 
-## 8. In-App Purchases (attach to version)
+## 8. In-App Purchases
 
-| Product ID | Type | Display name |
-|------------|------|--------------|
-| `com.wcs.psychosocial.pro.monthly` | Auto-renewable subscription | Professional Monthly |
-| `com.wcs.psychosocial.pro.yearly` | Auto-renewable subscription | Professional Yearly |
-| `com.wcs.psychosocial.enterprise.monthly` | Auto-renewable subscription | Enterprise Monthly |
-| `com.wcs.psychosocial.report` | Consumable | Single Report (Apple Pay) |
-| `com.wcs.psychosocial.consultation` | Consumable | Consultation Fee (Apple Pay) |
+**None.** Do not attach any IAP products to this version.
 
 ---
 
@@ -188,5 +182,5 @@ Detail mapping: `privacy-nutrition-labels.json`
 | Primary category | Medical |
 | Secondary category | Education |
 | Content rights | Does not contain third-party content |
-| Price | Free (IAP for subscriptions) |
+| Price | Free |
 | Availability | All territories |

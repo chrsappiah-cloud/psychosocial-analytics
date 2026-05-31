@@ -29,7 +29,6 @@ public struct SettingsView: View {
                                 .multilineTextAlignment(.center)
                             HStack(spacing: 20) {
                                 settingsPill("Role", access.currentUser.role.displayName)
-                                settingsPill("Plan", access.currentUser.tier.displayName)
                             }
                             HStack(spacing: 20) {
                                 settingsPill("Version", appVersion)

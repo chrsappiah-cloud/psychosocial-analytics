@@ -56,7 +56,7 @@ if not found:
 names = [
     "01-login", "02-home", "03-upload", "04-assess",
     "05-clients", "06-insights", "07-settings",
-    "08-admin-overview", "09-admin-payments", "10-admin-apple-pay"
+    "08-admin-overview", "09-admin-access", "10-admin-storage"
 ]
 for i, src in enumerate(found[:len(names)]):
     out = dest / f"{names[i]}.png"

@@ -4,7 +4,6 @@ public struct AdminPanelView: View {
     @StateObject private var access = AccessControlService.shared
     @State private var storageStatuses: [StorageBackendStatus] = []
     @State private var selectedRole: AppRole = .user
-    @State private var selectedTier: SubscriptionTier = .professional
     @State private var accountActive = true
     @State private var selectedSection: AdminSection = .overview
 
@@ -41,7 +40,6 @@ public struct AdminPanelView: View {
             .task {
                 storageStatuses = await storage.backendStatuses()
                 selectedRole = access.currentUser.role
-                selectedTier = access.currentUser.tier
                 accountActive = access.currentUser.isActive
             }
         }
@@ -95,7 +93,7 @@ public struct AdminPanelView: View {
 
                 HStack(spacing: 12) {
                     StatCard(title: "Users", value: "1", color: PremiumTheme.emerald, icon: "person.2.fill")
-                    StatCard(title: "Plan", value: access.currentUser.tier.displayName, color: PremiumTheme.premiumGold, icon: "person.badge.key")
+                    StatCard(title: "Role", value: access.currentUser.role.displayName, color: PremiumTheme.premiumGold, icon: "person.badge.key")
                     StatCard(title: "Storage", value: storageStatuses.filter(\.isConnected).count.formatted(), color: PremiumTheme.info, icon: "externaldrive.fill")
                 }
 
@@ -108,7 +106,6 @@ public struct AdminPanelView: View {
 
                     infoRow("User", access.currentUser.displayName)
                     infoRow("Role", access.currentUser.role.displayName)
-                    infoRow("Plan", access.currentUser.tier.displayName)
                     infoRow("Status", access.currentUser.isActive ? "Active" : "Inactive")
                 }
             }
@@ -119,7 +116,7 @@ public struct AdminPanelView: View {
     private var accessControlSection: some View {
         PremiumTheme.cardStyle {
             VStack(alignment: .leading, spacing: 16) {
-                BrandedSectionTitle("User Access Control", subtitle: "Manage roles, tiers, and account status")
+                BrandedSectionTitle("User Access Control", subtitle: "Manage roles and account status")
 
                 VStack(alignment: .leading, spacing: 12) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -134,18 +131,6 @@ public struct AdminPanelView: View {
                         .pickerStyle(.segmented)
                     }
 
-                    VStack(alignment: .leading, spacing: 6) {
-                        Label("Access Tier", systemImage: "person.badge.key")
-                            .font(.caption.weight(.medium))
-                            .foregroundStyle(PremiumTheme.textSecondary)
-                        Picker("Tier", selection: $selectedTier) {
-                            ForEach(SubscriptionTier.allCases, id: \.self) { tier in
-                                Text(tier.displayName).tag(tier)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-
                     Toggle(isOn: $accountActive) {
                         Label("Account Active", systemImage: accountActive ? "checkmark.shield" : "shield.slash")
                             .foregroundStyle(accountActive ? PremiumTheme.emeraldLight : PremiumTheme.danger)
@@ -153,7 +138,7 @@ public struct AdminPanelView: View {
                     .tint(PremiumTheme.emerald)
 
                     Button {
-                        access.updateUser(role: selectedRole, tier: selectedTier, isActive: accountActive)
+                        access.updateUser(role: selectedRole, isActive: accountActive)
                         AppCoordinator.shared.showNotification("Access settings updated", type: .success)
                     } label: {
                         Label("Apply Access Settings", systemImage: "checkmark.circle")

@@ -4,7 +4,6 @@ public struct AdminAccessView: View {
     @StateObject private var access = AccessControlService.shared
     @State private var storageStatuses: [StorageBackendStatus] = []
     @State private var selectedRole: AppRole = .user
-    @State private var selectedTier: SubscriptionTier = .professional
     @State private var accountActive = true
 
     private let storage = StorageCoordinator.makeDefault()
@@ -24,7 +23,6 @@ public struct AdminAccessView: View {
         .task {
             storageStatuses = await storage.backendStatuses()
             selectedRole = access.currentUser.role
-            selectedTier = access.currentUser.tier
             accountActive = access.currentUser.isActive
         }
     }
@@ -39,15 +37,10 @@ public struct AdminAccessView: View {
                             Text(role.displayName).tag(role)
                         }
                     }
-                    Picker("Access tier", selection: $selectedTier) {
-                        ForEach(SubscriptionTier.allCases, id: \.self) { tier in
-                            Text(tier.displayName).tag(tier)
-                        }
-                    }
                     Toggle("Account active", isOn: $accountActive)
                         .tint(PremiumTheme.emerald)
                     Button("Apply access settings") {
-                        access.updateUser(role: selectedRole, tier: selectedTier, isActive: accountActive)
+                        access.updateUser(role: selectedRole, isActive: accountActive)
                         AppCoordinator.shared.showNotification("Access settings updated", type: .success)
                     }
                     .psychosocialPrimaryButton()

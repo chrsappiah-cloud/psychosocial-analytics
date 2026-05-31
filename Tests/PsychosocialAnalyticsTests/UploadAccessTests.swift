@@ -3,30 +3,17 @@ import XCTest
 
 @MainActor
 final class UploadAccessTests: XCTestCase {
-    func testUserCanUploadWithProfessionalTier() async throws {
+    func testUserCanUploadWhenActive() async throws {
         let access = AccessControlService(
             currentUser: AppUserProfile(
                 email: "user@test.com",
                 displayName: "User",
-                role: .user,
-                tier: .professional
+                role: .user
             )
         )
         XCTAssertTrue(access.can(.uploadMedia))
         XCTAssertTrue(access.can(.importFromURL))
         XCTAssertFalse(access.can(.manageAccess))
-    }
-
-    func testFreeTierCanUploadWhenActive() {
-        let access = AccessControlService(
-            currentUser: AppUserProfile(
-                email: "free@test.com",
-                displayName: "Free",
-                role: .user,
-                tier: .free
-            )
-        )
-        XCTAssertTrue(access.can(.uploadMedia))
     }
 
     func testInactiveAccountCannotUpload() {
@@ -35,7 +22,6 @@ final class UploadAccessTests: XCTestCase {
                 email: "inactive@test.com",
                 displayName: "Inactive",
                 role: .user,
-                tier: .professional,
                 isActive: false
             )
         )
@@ -47,8 +33,7 @@ final class UploadAccessTests: XCTestCase {
             currentUser: AppUserProfile(
                 email: "admin@test.com",
                 displayName: "Admin",
-                role: .administrator,
-                tier: .enterprise
+                role: .administrator
             )
         )
         XCTAssertTrue(access.can(.manageAccess))
@@ -60,7 +45,7 @@ final class UploadAccessTests: XCTestCase {
         let database = try LocalDatabase(directory: dir)
         let storage = StorageCoordinator(primary: LocalSupabaseFallback(directory: dir), backups: [])
         let access = AccessControlService(
-            currentUser: AppUserProfile(email: "u@t.com", displayName: "U", tier: .professional)
+            currentUser: AppUserProfile(email: "u@t.com", displayName: "U")
         )
         let service = UploadService(storage: storage, database: database, access: access)
         let item = try await service.uploadText("Clinical note body", title: "note")
@@ -73,7 +58,7 @@ final class UploadAccessTests: XCTestCase {
         let dir = try TestFixtures.tempDirectory()
         let database = try LocalDatabase(directory: dir)
         let access = AccessControlService(
-            currentUser: AppUserProfile(email: "u@t.com", displayName: "U", tier: .professional)
+            currentUser: AppUserProfile(email: "u@t.com", displayName: "U")
         )
         let service = UploadService(storage: StorageCoordinator(primary: LocalSupabaseFallback(directory: dir), backups: []), database: database, access: access)
         let client = try await service.saveNewClient(NewClientDraft(fullName: "Alex Rivera"))

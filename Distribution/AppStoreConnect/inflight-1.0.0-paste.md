@@ -4,9 +4,9 @@
 **App Store Connect ID:** `6768490648`  
 **Version page:** https://appstoreconnect.apple.com/apps/6768490648/distribution/ios/version/inflight  
 **Bundle ID:** `wcs.Psychosocial--Analytics`  
-**Marketing version / build:** `1.0.0` / `3` (uploaded & attached)
+**Marketing version / build:** `1.0.0` / `4`
 
-Use this file to copy fields into the in-flight version. After pasting, attach build **1.0.0 (3)** from TestFlight once processing completes.
+Use this file to copy fields into the in-flight version. This build is a **free app** with **no in-app purchases or Apple Pay**.
 
 ---
 
@@ -20,7 +20,7 @@ Use this file to copy fields into the in-flight version. After pasting, attach b
 ### What's New in This Version
 
 ```
-Initial release of Psychosocial Analytics for iOS.
+This update removes all in-app purchases and Apple Pay. Psychosocial Analytics is now a free app.
 
 • Structured psychosocial assessments with section-based clinical workflow
 • Upload hub: files, media, pasted text, and HTTPS URL imports
@@ -28,9 +28,7 @@ Initial release of Psychosocial Analytics for iOS.
 • Caseload dashboard, client search, insights, and reports
 • AI-assisted report drafts (review before clinical use)
 • Public / Administrator login with role-based access control
-• Admin panel: user management, subscription control, storage monitoring
-• Apple In-App Purchases (StoreKit 2): Professional / Enterprise subscriptions
-• Apple Pay integration for one-time report purchases and consultation fees
+• Admin panel: user access control and storage monitoring (no payments)
 • Dark, accessible interface for field use
 ```
 
@@ -41,7 +39,7 @@ Initial release of Psychosocial Analytics for iOS.
 | Field | Paste value |
 |-------|-------------|
 | **Subtitle** (30 chars max) | Caseload & assessments |
-| **Promotional Text** (170 chars) | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. |
+| **Promotional Text** (170 chars) | Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. Free app; no in-app purchases. |
 
 ### Description
 
@@ -54,11 +52,11 @@ Key features:
 • New client intake with secure cloud sync
 • Client search, caseload dashboard, and reporting views
 • Public / Administrator login with role-based access control
-• Admin panel: manage users, tiers, account status, and storage backends
-• Apple In-App Purchases: Professional & Enterprise subscriptions via StoreKit 2
-• Apple Pay integration for one-time report purchases and consultation fees
+• Admin panel: manage users, account status, and storage backends
 • Supabase primary storage with iCloud and Cloudflare backups
 • Dark, accessible interface for field use
+
+This app is free and does not offer in-app purchases or Apple Pay.
 
 Review all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.
 ```
@@ -66,7 +64,7 @@ Review all AI-generated content before signing or exporting clinical documents. 
 ### Keywords (100 chars total, comma-separated, no spaces after commas)
 
 ```
-psychosocial,social work,assessment,caseload,clinical,mental health,reports,apple pay,admin panel
+psychosocial,social work,assessment,caseload,clinical,mental health,reports,admin panel
 ```
 
 ### URLs
@@ -81,9 +79,8 @@ psychosocial,social work,assessment,caseload,clinical,mental health,reports,appl
 
 ## Build
 
-1. **TestFlight** → wait for build `1.0.0 (3)` to finish processing.
+1. **TestFlight** → wait for build `1.0.0 (4)` to finish processing.
 2. On the in-flight version page → **Build** → **+** → select that build.
-3. If no build appears: archive again with bumped `CURRENT_PROJECT_VERSION` (see below).
 
 ---
 
@@ -94,23 +91,22 @@ psychosocial,social work,assessment,caseload,clinical,mental health,reports,appl
 | Sign-in required? | **Yes** — Public or Administrator login |
 | User name | *(any email for Public, or admin@psychosocialanalytics.com for Admin)* |
 | Password | *(leave blank for Public; admin123 for Admin)* |
-| Contact first name | *(your name)* |
-| Contact last name | *(your name)* |
-| Contact phone | *(your phone)* |
 | Contact email | support@psychosocialanalytics.com |
 
 ### Notes
 
 ```
-Psychosocial Analytics — App Review Notes (v1.0.0)
+Psychosocial Analytics — App Review Notes (v1.0.0, build 4)
+
+IAP REMOVED: No in-app purchases, Apple Pay, or Restore Purchases. App is free.
+
+ACCOUNT DELETION: Settings → Account → Delete Account (two-step confirmation).
 
 - Public login: enter any email to sign in as a clinician user.
 - Administrator login: admin@psychosocialanalytics.com / admin123 for full admin panel.
-- Admin panel includes Overview, Access Control, Payments, Storage, and Apple Pay sections.
-- Apple Pay uses PassKit with merchant ID merchant.com.wcs.psychosocialanalytics.
+- Admin panel includes Overview, Access Control, and Storage only.
 - Upload tab supports files, photos, video, text, and HTTPS URL imports.
 - AI drafts are simulated; no PHI sent to third-party AI.
-- Subscriptions use StoreKit 2 (Professional / Enterprise).
 - Export compliance: standard HTTPS only (ITSAppUsesNonExemptEncryption = false).
 
 Contact: support@psychosocialanalytics.com
@@ -128,26 +124,9 @@ Contact: support@psychosocialanalytics.com
 
 ---
 
-## App Privacy (questionnaire)
-
-Use `privacy-nutrition-labels.json` as the mapping guide. Summary:
-
-- **No** data used to track users
-- Data collected: name (client), health (assessment content), user content (uploads), email (profile) — all for **App Functionality**, not linked to identity for tracking
-
----
-
 ## In-App Purchases
 
-Attach to this version before submit:
-
-| Product ID | Type |
-|------------|------|
-| `com.wcs.psychosocial.pro.monthly` | Auto-renewable subscription |
-| `com.wcs.psychosocial.pro.yearly` | Auto-renewable subscription |
-| `com.wcs.psychosocial.enterprise.monthly` | Auto-renewable subscription |
-| `com.wcs.psychosocial.report` | Consumable (Apple Pay one-time) |
-| `com.wcs.psychosocial.consultation` | Consumable (Apple Pay one-time) |
+**None.** Remove any IAP products from this version before submitting.
 
 ---
 
@@ -182,28 +161,9 @@ Full form field mapping: `FORM_RESPONSES.md`
 
 - [ ] All localized metadata saved
 - [ ] Screenshots uploaded for 6.7" (and iPad if universal)
-- [ ] Build `1.0.0 (3)` selected
+- [ ] Build `1.0.0 (4)` selected
 - [ ] Export compliance answered
-- [ ] IAPs linked to version
+- [ ] **No** IAP products linked to version
 - [ ] App Privacy complete
 - [ ] Age rating / category: Medical (+ Education secondary)
 - [ ] **Add for Review** → Submit
-
----
-
-## If build upload fails or version already has a build
-
-Bump build number in `project.yml`:
-
-```yaml
-CURRENT_PROJECT_VERSION: "4"
-```
-
-Then:
-
-```bash
-xcodegen generate
-# Xcode: Product → Archive → Upload
-```
-
-New binary will appear as `1.0.0 (4)` for the same in-flight version.

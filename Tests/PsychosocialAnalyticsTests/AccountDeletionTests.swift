@@ -8,8 +8,7 @@ final class AccountDeletionTests: XCTestCase {
             currentUser: AppUserProfile(
                 email: "delete-me@test.com",
                 displayName: "Delete Me",
-                role: .user,
-                tier: .professional
+                role: .user
             )
         )
         access.persistCurrentUser()
