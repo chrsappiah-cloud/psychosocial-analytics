@@ -82,39 +82,40 @@ public struct LoginView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .accessibilityIdentifier(AccessibilityID.screenLogin)
     }
 
     private var loginTabSelector: some View {
         HStack(spacing: 0) {
             ForEach(LoginTab.allCases, id: \.self) { tab in
-                Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        selectedTab = tab
-                        errorMessage = nil
-                    }
-                } label: {
-                    VStack(spacing: 6) {
-                        Image(systemName: tab.icon)
-                            .font(.title3)
-                        Text(tab.title)
-                            .font(.caption.weight(.semibold))
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            selectedTab = tab
+                            errorMessage = nil
+                        }
+                    } label: {
+                        VStack(spacing: 6) {
+                            Image(systemName: tab.icon)
+                                .font(.title3)
+                            Text(tab.title)
+                                .font(.caption.weight(.semibold))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(
+                            selectedTab == tab
+                                ? PremiumTheme.emerald.opacity(0.15)
+                                : Color.clear,
+                            in: RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        )
+                        .foregroundStyle(
+                            selectedTab == tab
+                                ? PremiumTheme.emeraldLight
+                                : PremiumTheme.textSecondary
+                        )
                     }
                     .accessibilityIdentifier("login_tab_\(tab.rawValue)")
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(
-                        selectedTab == tab
-                            ? PremiumTheme.emerald.opacity(0.15)
-                            : Color.clear,
-                        in: RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    )
-                    .foregroundStyle(
-                        selectedTab == tab
-                            ? PremiumTheme.emeraldLight
-                            : PremiumTheme.textSecondary
-                    )
-                }
-                .buttonStyle(.plain)
+                    .buttonStyle(.plain)
             }
         }
         .padding(4)
@@ -150,6 +151,7 @@ public struct LoginView: View {
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     #endif
+                    .accessibilityIdentifier(AccessibilityID.fieldLoginEmail)
             }
 
             VStack(alignment: .leading, spacing: 6) {
@@ -159,6 +161,7 @@ public struct LoginView: View {
                     #if os(iOS)
                     .textContentType(.name)
                     #endif
+                    .accessibilityIdentifier(AccessibilityID.fieldLoginDisplayName)
             }
 
             VStack(alignment: .leading, spacing: 6) {
@@ -184,6 +187,7 @@ public struct LoginView: View {
                 .frame(maxWidth: .infinity)
             }
             .psychosocialPrimaryButton()
+            .accessibilityIdentifier(AccessibilityID.buttonSignIn)
             .disabled(isSubmitting || email.trimmingCharacters(in: .whitespaces).isEmpty)
             .opacity(isSubmitting || email.trimmingCharacters(in: .whitespaces).isEmpty ? 0.6 : 1)
         }
@@ -203,6 +207,7 @@ public struct LoginView: View {
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     #endif
+                    .accessibilityIdentifier(AccessibilityID.fieldLoginEmail)
             }
 
             VStack(alignment: .leading, spacing: 6) {
@@ -212,6 +217,7 @@ public struct LoginView: View {
                     #if os(iOS)
                     .textContentType(.password)
                     #endif
+                    .accessibilityIdentifier(AccessibilityID.fieldLoginPassword)
             }
 
             Button {
@@ -227,6 +233,7 @@ public struct LoginView: View {
                 .frame(maxWidth: .infinity)
             }
             .psychosocialPrimaryButton()
+            .accessibilityIdentifier(AccessibilityID.buttonSignIn)
             .disabled(isSubmitting || email.trimmingCharacters(in: .whitespaces).isEmpty || password.isEmpty)
             .opacity(isSubmitting || email.trimmingCharacters(in: .whitespaces).isEmpty || password.isEmpty ? 0.6 : 1)
 
@@ -241,17 +248,12 @@ public struct LoginView: View {
         isSubmitting = true
         errorMessage = nil
 
-        let name = displayName.trimmingCharacters(in: .whitespaces).isEmpty
-            ? email.components(separatedBy: "@").first ?? "User"
-            : displayName
-
-        access.updateUser(
+        AuthSessionService.signInPublic(
+            email: email,
+            displayName: displayName,
             role: selectedRole,
-            isActive: true
+            access: access
         )
-        access.updateEmail(email)
-        access.updateDisplayName(name)
-        access.persistCurrentUser()
 
         isSubmitting = false
         onAuthenticated()
@@ -262,14 +264,7 @@ public struct LoginView: View {
         errorMessage = nil
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let trimmedEmail = email.trimmingCharacters(in: .whitespaces).lowercased()
-            let trimmedPassword = password.trimmingCharacters(in: .whitespaces)
-
-            if trimmedEmail == "admin@psychosocialanalytics.com" && trimmedPassword == "admin123" {
-                access.promoteToAdministrator()
-                access.updateEmail(trimmedEmail)
-                access.updateDisplayName("Administrator")
-                access.persistCurrentUser()
+            if AuthSessionService.signInAdmin(email: email, password: password, access: access) {
                 isSubmitting = false
                 onAuthenticated()
             } else {

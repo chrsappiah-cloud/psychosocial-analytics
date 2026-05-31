@@ -63,8 +63,12 @@ jobs:
             -destination "$DEST" \
             -only-testing:PsychosocialAnalyticsTests \
             -configuration Debug \
+            -enableCodeCoverage YES \
             -resultBundlePath TestResults-Unit.xcresult \
             CODE_SIGNING_ALLOWED=NO
+
+      - name: Coverage gate (PsychosocialAnalytics)
+        run: ./scripts/check-coverage.sh TestResults-Unit.xcresult
 
       - name: Upload unit test results
         if: always()
@@ -111,7 +115,8 @@ jobs:
           xcodebuild test \
             -scheme PsychosocialAnalytics \
             -destination "$DEST" \
-            -only-testing:PsychosocialAnalyticsUITests \
+            -only-testing:PsychosocialAnalyticsUITests/LoginFlowUITests \
+            -only-testing:PsychosocialAnalyticsUITests/PsychosocialAnalyticsUITests \
             -configuration Debug \
             -resultBundlePath TestResults-UI.xcresult \
             CODE_SIGNING_ALLOWED=NO
@@ -136,4 +141,7 @@ jobs:
           test -f App/PsychosocialAnalyticsApp/Info.plist
           test -f project.yml
           test -f scripts/run-all-tests.sh
-          echo "Distribution and project files present."
+          test -f scripts/check-coverage.sh
+          test -f docs/WCS-TESTING-KIT.md
+          test -f Tests/Fixtures/README.md
+          echo "Distribution, testing kit, and project files present."

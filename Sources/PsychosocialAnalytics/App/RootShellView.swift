@@ -4,7 +4,9 @@ public struct RootShellView: View {
     @StateObject private var coordinator = AppCoordinator.shared
     @StateObject private var access = AccessControlService.shared
 
-    public init() {}
+    public init() {
+        UITestLaunchConfig.applyLaunchArgumentsIfNeeded()
+    }
 
     public var body: some View {
         ZStack {

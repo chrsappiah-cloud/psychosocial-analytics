@@ -7,8 +7,10 @@ from pathlib import Path
 from fpdf import FPDF
 
 DESKTOP = Path.home() / "Desktop"
-SOURCE = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May30-2026.txt"
-OUTPUT = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May30-2026.pdf"
+SOURCE = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May31-2026.txt"
+OUTPUT = DESKTOP / "PsychosocialAnalytics-AppStoreReviewReply-May31-2026.pdf"
+SUBMISSION_ID = "72a127f7-1a12-443c-964c-b11a5ba400e7"
+BUILD = "5"
 
 
 def ascii_safe(text: str) -> str:
@@ -32,7 +34,7 @@ class ReviewReplyPDF(FPDF):
         self.set_y(-15)
         self.set_font("Helvetica", "I", 8)
         self.set_text_color(100, 100, 100)
-        self.cell(0, 10, f"Psychosocial Analytics — App Review Reply  |  Page {self.page_no()}", align="C")
+        self.cell(0, 10, f"Psychosocial Analytics - App Review Reply  |  Page {self.page_no()}", align="C")
 
 
 def build_pdf(text: str, output: Path) -> None:
@@ -46,8 +48,8 @@ def build_pdf(text: str, output: Path) -> None:
     pdf.set_font("Helvetica", "", 11)
     pdf.set_text_color(40, 40, 40)
     pdf.cell(0, 7, "App Store Review - Resolution Center Reply", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 7, "Submission ID: b14ba558-cfc8-4d90-878d-3234594d2a7d", new_x="LMARGIN", new_y="NEXT")
-    pdf.cell(0, 7, "Version 1.0.0 (Build 4) | 30 May 2026", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 7, f"Submission ID: {SUBMISSION_ID}", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 7, f"Version 1.0.0 (Build {BUILD}) | 31 May 2026", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(6)
     pdf.set_font("Helvetica", "", 10)
 
@@ -56,7 +58,7 @@ def build_pdf(text: str, output: Path) -> None:
             pdf.ln(4)
             pdf.set_font("Helvetica", "B", 11)
             pdf.set_text_color(20, 80, 60)
-            pdf.multi_cell(0, 6, line.strip("- ").strip())
+            pdf.multi_cell(0, 6, ascii_safe(line.strip("- ").strip()))
             pdf.set_font("Helvetica", "", 10)
             pdf.set_text_color(40, 40, 40)
         elif set(line.strip()) == {"-"}:
@@ -64,7 +66,7 @@ def build_pdf(text: str, output: Path) -> None:
         elif not line.strip():
             pdf.ln(3)
         else:
-            pdf.multi_cell(0, 5, line)
+            pdf.multi_cell(0, 5, ascii_safe(line))
             pdf.ln(1)
 
     pdf.output(str(output))

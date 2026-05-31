@@ -1,6 +1,9 @@
-Psychosocial Analytics — App Review Notes (v1.0.0, build 4)
+Psychosocial Analytics — App Review Notes (v1.0.0, build 5)
 
-IMPORTANT: This build removes all in-app purchases and Apple Pay. The app is free. There are no StoreKit products, no Restore Purchases, and no payment UI.
+Submission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7
+
+FREE APP — NO IN-APP PURCHASES OR SUBSCRIPTIONS
+This build removes all StoreKit products, Apple Pay, Restore Purchases, and payment UI. There are no auto-renewable subscriptions. Do not attach any IAP products to this version.
 
 Sign-in (required):
 - Public Access tab: enter any email and optional display name → Sign In (clinician role).
@@ -8,12 +11,16 @@ Sign-in (required):
 
 Admin panel (shield tab, administrator only):
 - Overview: session and storage summary
-- Access: assign role (Clinician / Administrator), access tier (Free / Professional / Enterprise), and active status. Tiers are not sold via the App Store.
+- Access: assign role (Clinician / Administrator) and active status
 - Storage: backend connection status (Supabase, iCloud, Cloudflare when configured)
 
 Upload tab: files, photo/video library, pasted text, HTTPS URL import, New Client intake.
 
 Assessments: structured sections; AI draft returns simulated narrative text for clinician review only. No PHI is sent to third-party AI in this build.
+
+Legal links (also in App Description):
+- Privacy Policy: https://www.psychosocialanalytics.com/privacy
+- Terms of Use (standard Apple EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 Account deletion (Guideline 5.1.1(v)):
 - Settings → Account → Delete Account → confirm twice

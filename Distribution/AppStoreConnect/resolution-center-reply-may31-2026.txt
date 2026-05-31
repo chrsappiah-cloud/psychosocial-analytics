@@ -1,0 +1,60 @@
+Psychosocial Analytics — App Store Review Reply
+Submission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7
+Version 1.0.0 (Build 5)
+31 May 2026
+
+Dear App Review Team,
+
+Thank you for your review. We have fully removed all in-app purchases, auto-renewable subscriptions, Apple Pay, and StoreKit payment flows from Psychosocial Analytics. The app is now a free clinical documentation tool with no monetization.
+
+----------------------------------------------------------------------
+GUIDELINE 2.1(b) — IN-APP PURCHASE PRODUCTS NOT SUBMITTED
+----------------------------------------------------------------------
+
+Resolution:
+- Psychosocial Analytics no longer offers any In-App Purchases.
+- We removed StoreKit, subscription screens, payment UI, and Restore Purchases from the app binary (build 5).
+- We removed all IAP products from this App Store version in App Store Connect.
+- There are no IAP products to submit for review because the app is free.
+
+We respectfully ask you to review build 5, which contains no references to purchasable subscriptions or payment flows.
+
+----------------------------------------------------------------------
+GUIDELINE 3.1.2(c) — AUTO-RENEWABLE SUBSCRIPTION METADATA
+----------------------------------------------------------------------
+
+Resolution:
+- Psychosocial Analytics does NOT offer auto-renewable subscriptions.
+- SubscriptionStoreView and all subscription purchase flows have been removed.
+- The app does not display subscription titles, lengths, prices, or renewal terms because there are no subscriptions.
+
+Metadata updated for build 5:
+- Privacy Policy (functional): https://www.psychosocialanalytics.com/privacy
+- Terms of Use (standard Apple EULA, linked in App Description): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+- App Description states clearly: "This app is free and does not offer in-app purchases or Apple Pay."
+
+App Review Notes for build 5 also confirm: free app, no IAP, no subscription UI.
+
+----------------------------------------------------------------------
+HOW TO TEST (build 5)
+----------------------------------------------------------------------
+
+Sign-in:
+- Public Access tab: enter any email → Sign In (clinician).
+- Administrator tab: admin@psychosocialanalytics.com / admin123
+
+Verify no payments:
+- No Subscription, Payments, Restore Purchases, or Apple Pay screens exist.
+- Admin panel tabs: Overview, Access, Storage only (no Payments tab).
+- Settings → Support shows Privacy Policy link only (no subscription management).
+
+Account deletion (5.1.1(v)):
+- Settings → Account → Delete Account → confirm twice.
+
+AI drafts are simulated on-device; no PHI sent to third-party AI.
+
+Contact: support@psychosocialanalytics.com
+
+Thank you,
+Christopher Appiah-Thompson
+World Class Services

@@ -71,6 +71,12 @@ public final class AccessControlService: ObservableObject {
         }
     }
 
+    public func configureSession(role: AppRole, isActive: Bool = true) {
+        currentUser.role = role
+        currentUser.isActive = isActive
+        permissions = Self.permissions(for: currentUser)
+    }
+
     public func updateUser(role: AppRole, isActive: Bool) {
         guard isAdministrator else { return }
         currentUser.role = role

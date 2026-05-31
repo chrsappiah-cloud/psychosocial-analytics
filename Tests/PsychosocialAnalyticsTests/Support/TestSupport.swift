@@ -53,6 +53,34 @@ enum TestFixtures {
         let database = try LocalDatabase(directory: dir)
         return AssessmentRepository(database: database, backend: MockPsychosocialBackend())
     }
+
+    @MainActor
+    static func isolatedAccessControl(currentUser: AppUserProfile? = nil) -> AccessControlService {
+        UserDefaults.standard.removeObject(forKey: AccessControlService.savedProfileKey)
+        return AccessControlService(currentUser: currentUser)
+    }
+}
+
+enum FixtureLoader {
+    private static var fixturesRoot: URL {
+        URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("Fixtures", isDirectory: true)
+    }
+
+    static func data(named name: String, subdirectory: String) throws -> Data {
+        let url = fixturesRoot
+            .appendingPathComponent(subdirectory, isDirectory: true)
+            .appendingPathComponent("\(name).json")
+        return try Data(contentsOf: url)
+    }
+
+    static func decode<T: Decodable>(_ type: T.Type, named name: String, subdirectory: String) throws -> T {
+        let data = try data(named: name, subdirectory: subdirectory)
+        return try JSONDecoder().decode(type, from: data)
+    }
 }
 
 // MARK: - Mocks

@@ -3,9 +3,16 @@ import Foundation
 /// Prepares deterministic data when running XCUITest (`--uitesting`).
 @MainActor
 public enum UITestLaunchConfig {
-    public static func applyIfNeeded() async {
+    /// Synchronous launch setup (auth state) — run before first frame.
+    public static func applyLaunchArgumentsIfNeeded() {
         let args = ProcessInfo.processInfo.arguments
         guard args.contains("--uitesting") else { return }
+
+        if args.contains("--fresh-auth") {
+            UserDefaults.standard.removeObject(forKey: AccessControlService.savedProfileKey)
+            AccessControlService.shared.resetAccountAfterDeletion()
+            AppCoordinator.shared.signOut()
+        }
 
         if args.contains("--skip-login") {
             AccessControlService.shared.promoteToAdministrator()
@@ -14,6 +21,13 @@ public enum UITestLaunchConfig {
                 AppCoordinator.shared.activeTab = .admin
             }
         }
+    }
+
+    public static func applyIfNeeded() async {
+        let args = ProcessInfo.processInfo.arguments
+        guard args.contains("--uitesting") else { return }
+
+        applyLaunchArgumentsIfNeeded()
 
         let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("PsychosocialAnalytics", isDirectory: true)

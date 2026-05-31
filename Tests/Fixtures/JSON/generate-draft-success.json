@@ -1,0 +1,6 @@
+{
+  "content": "BACKEND AI: Clinical summary with strengths and goals.",
+  "model": "gpt-4o",
+  "confidence": 0.92,
+  "section": "clinicalSummary"
+}

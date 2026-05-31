@@ -135,8 +135,11 @@ public struct SettingsView: View {
                     PremiumTheme.cardStyle {
                         VStack(alignment: .leading, spacing: 10) {
                             BrandedSectionTitle("Support")
-                            Link(destination: URL(string: "https://www.apple.com/legal/privacy/")!) {
+                            Link(destination: URL(string: "https://www.psychosocialanalytics.com/privacy")!) {
                                 Label("Privacy policy", systemImage: "hand.raised")
+                            }
+                            Link(destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!) {
+                                Label("Terms of use", systemImage: "doc.text")
                             }
                             Link(destination: URL(string: "mailto:support@psychosocialanalytics.com")!) {
                                 Label("Contact support", systemImage: "envelope")

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C8C45429E7D3B2245064B3F /* AIGenerationIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */; };
 		0DA2B17FFCEB0B186761A83B /* PsychosocialAnalyticsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */; };
+		0E535C3EF1515E6E25687939 /* AccessControlServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A734111A29FDCD1AEEAC8 /* AccessControlServiceTests.swift */; };
 		1017FA3AE0404CC1AC22AE28 /* EndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */; };
 		1BD24F3D40364D9E5F7378BA /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0257CBBA4702DE2AC0CE9A6 /* TestSupport.swift */; };
 		29B5DA3F30A40BA3CEC8EDAB /* AccountDeletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC68C12C3764A80686AD3EB /* AccountDeletionTests.swift */; };
@@ -29,7 +30,9 @@
 		C841608D985C45D14C2A161F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 715A92D883B0067869D4DEC3 /* Assets.xcassets */; };
 		CB0BACDAF0FE407FE6DE1EB9 /* AIGenerationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */; };
 		D445F30E6857C782D6D8048F /* MiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10C3C3E185662007477BC42 /* MiddlewareTests.swift */; };
+		F213C81D3F0D310661C6B636 /* LoginFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E10FA90804C1133852537F /* LoginFlowUITests.swift */; };
 		F61A5EE6968E7C2B6C123F0E /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9487C90C55FB12D110A5ECE3 /* ExportOptions.plist */; };
+		FFAF3BC1700E429BA222AEC4 /* AuthSessionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98144505D1E65CE112E50A15 /* AuthSessionServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +48,9 @@
 /* Begin PBXFileReference section */
 		03BB33858D971CA8B2915174 /* PsychosocialAnalytics.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PsychosocialAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B21878CE41E0B14DE8E530 /* Psychosocial Analytics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Psychosocial Analytics"; path = .; sourceTree = SOURCE_ROOT; };
+		25E10FA90804C1133852537F /* LoginFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowUITests.swift; sourceTree = "<group>"; };
 		2AC68C12C3764A80686AD3EB /* AccountDeletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionTests.swift; sourceTree = "<group>"; };
+		2E6A734111A29FDCD1AEEAC8 /* AccessControlServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControlServiceTests.swift; sourceTree = "<group>"; };
 		32C091E2D79B1EF5F31239F1 /* GenAIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenAIServiceTests.swift; sourceTree = "<group>"; };
 		5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModelAITests.swift; sourceTree = "<group>"; };
 		664317B97B712F7DB6B904A6 /* BackendServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendServiceTests.swift; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		9487C90C55FB12D110A5ECE3 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = ExportOptions.plist; sourceTree = "<group>"; };
 		9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndToEndTests.swift; sourceTree = "<group>"; };
+		98144505D1E65CE112E50A15 /* AuthSessionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionServiceTests.swift; sourceTree = "<group>"; };
 		A27FF2584FDF46A4C975121A /* AppStoreScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshotUITests.swift; sourceTree = "<group>"; };
 		A745B87C4430B9C3567710FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationUITests.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 			children = (
 				B06678B95DC47E207D2561D4 /* AIGenerationUITests.swift */,
 				A27FF2584FDF46A4C975121A /* AppStoreScreenshotUITests.swift */,
+				25E10FA90804C1133852537F /* LoginFlowUITests.swift */,
 				CA77C87E49283A95466FC0DF /* PsychosocialAnalyticsUITests.swift */,
 				6B516EDBB973B3A6F9918C5A /* UITestTabBar.swift */,
 			);
@@ -131,11 +138,13 @@
 		3CFC3215FC69034FB740F704 /* PsychosocialAnalyticsTests */ = {
 			isa = PBXGroup;
 			children = (
+				2E6A734111A29FDCD1AEEAC8 /* AccessControlServiceTests.swift */,
 				2AC68C12C3764A80686AD3EB /* AccountDeletionTests.swift */,
 				EC9C4BE60057C3203FCD90D0 /* AIGenerationBackendTests.swift */,
 				67D213C8573CCE558948231A /* AIGenerationEndToEndTests.swift */,
 				6955FDA04EC3D682E2B0B828 /* AIGenerationIntegrationTests.swift */,
 				5A93BA6CF3756430E5AA00ED /* AssessmentViewModelAITests.swift */,
+				98144505D1E65CE112E50A15 /* AuthSessionServiceTests.swift */,
 				664317B97B712F7DB6B904A6 /* BackendServiceTests.swift */,
 				9525553352EB5BF7549DD0F6 /* DatabaseTests.swift */,
 				97B1BEF10ECD5313B9B25A03 /* EndToEndTests.swift */,
@@ -322,6 +331,7 @@
 			files = (
 				CB0BACDAF0FE407FE6DE1EB9 /* AIGenerationUITests.swift in Sources */,
 				2E67846A662CA78C7C705400 /* AppStoreScreenshotUITests.swift in Sources */,
+				F213C81D3F0D310661C6B636 /* LoginFlowUITests.swift in Sources */,
 				0DA2B17FFCEB0B186761A83B /* PsychosocialAnalyticsUITests.swift in Sources */,
 				90BC380B4FBBAC549F1803FD /* UITestTabBar.swift in Sources */,
 			);
@@ -334,8 +344,10 @@
 				BFC30C4C7D29820E41A7E5E2 /* AIGenerationBackendTests.swift in Sources */,
 				6021FAD004C868ABBC99A695 /* AIGenerationEndToEndTests.swift in Sources */,
 				0C8C45429E7D3B2245064B3F /* AIGenerationIntegrationTests.swift in Sources */,
+				0E535C3EF1515E6E25687939 /* AccessControlServiceTests.swift in Sources */,
 				29B5DA3F30A40BA3CEC8EDAB /* AccountDeletionTests.swift in Sources */,
 				80C7D99F04FDE4A40F8462A5 /* AssessmentViewModelAITests.swift in Sources */,
+				FFAF3BC1700E429BA222AEC4 /* AuthSessionServiceTests.swift in Sources */,
 				41FF72152808F65C50C11EC8 /* BackendServiceTests.swift in Sources */,
 				9DFBF18048F18450F41431FC /* DatabaseTests.swift in Sources */,
 				1017FA3AE0404CC1AC22AE28 /* EndToEndTests.swift in Sources */,
@@ -420,7 +432,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = TM2WG7HH96;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -546,7 +558,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TM2WG7HH96;
 				ENABLE_NS_ASSERTIONS = NO;

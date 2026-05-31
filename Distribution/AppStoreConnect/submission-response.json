@@ -1,30 +1,32 @@
 {
   "appStoreConnectAppId": "6768490648",
   "version": "1.0.0",
-  "build": "4",
-  "preparedDate": "2026-05-30",
+  "build": "5",
+  "preparedDate": "2026-05-31",
+  "submissionId": "72a127f7-1a12-443c-964c-b11a5ba400e7",
   "submissionFields": {
     "versionInfo": {
-      "whatsNew": "This update removes all in-app purchases and Apple Pay. Psychosocial Analytics is now a free app.\n\n• Structured psychosocial assessments with section-based clinical workflow\n• Upload hub: files, media, pasted text, and HTTPS URL imports\n• New client intake with secure sync when configured\n• Caseload dashboard, client search, insights, and reports\n• AI-assisted report drafts (review before clinical use)\n• Public / Administrator login with role-based access control\n• Admin panel: user access control and storage monitoring (no payments)\n• Dark, accessible interface for field use",
+      "whatsNew": "This update removes all in-app purchases, subscriptions, and Apple Pay. Psychosocial Analytics is now a completely free app.\n\n• Structured psychosocial assessments with section-based clinical workflow\n• Upload hub: files, media, pasted text, and HTTPS URL imports\n• New client intake with secure sync when configured\n• Caseload dashboard, client search, insights, and reports\n• AI-assisted report drafts (review before clinical use)\n• Public / Administrator login with role-based access control\n• Admin panel: user access control and storage monitoring\n• Dark, accessible interface for field use",
       "copyright": "© 2026 World Class Services"
     },
     "appInfo": {
       "subtitle": "Caseload & assessments",
-      "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. Free app; no in-app purchases.",
-      "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, account status, and storage backends\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nThis app is free and does not offer in-app purchases or Apple Pay.\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
+      "promotionalText": "Document psychosocial assessments, track caseloads, and generate AI-assisted report drafts—built for social work teams. Free app; no in-app purchases or subscriptions.",
+      "description": "Psychosocial Analytics helps social workers and clinical teams capture structured psychosocial assessments, manage client caseloads, upload clinical media, and prepare report drafts with AI assistance.\n\nKey features:\n• Structured psychosocial assessment sections aligned to clinical workflows\n• Upload hub: files, photos, videos, audio, text, and HTTPS URL imports\n• New client intake with secure cloud sync\n• Client search, caseload dashboard, and reporting views\n• Public / Administrator login with role-based access control\n• Admin panel: manage users, account status, and storage backends\n• Supabase primary storage with iCloud and Cloudflare backups\n• Dark, accessible interface for field use\n\nThis app is free and does not offer in-app purchases, auto-renewable subscriptions, or Apple Pay.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/\n\nReview all AI-generated content before signing or exporting clinical documents. Configure Supabase credentials for production sync.",
       "keywords": "psychosocial,social work,assessment,caseload,clinical,mental health,reports,admin panel"
     },
     "urls": {
       "supportURL": "https://www.psychosocialanalytics.com/support",
       "marketingURL": "https://www.psychosocialanalytics.com",
-      "privacyPolicyURL": "https://www.psychosocialanalytics.com/privacy"
+      "privacyPolicyURL": "https://www.psychosocialanalytics.com/privacy",
+      "termsOfUseURL": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
     },
     "appReviewInfo": {
       "signInRequired": true,
       "demoAccountName": "admin@psychosocialanalytics.com",
       "demoAccountPassword": "admin123",
       "contactEmail": "support@psychosocialanalytics.com",
-      "notes": "Psychosocial Analytics — App Review Notes (v1.0.0, build 4)\n\nSubmission ID: b14ba558-cfc8-4d90-878d-3234594d2a7d\n\nIAP REMOVED: No in-app purchases, Apple Pay, or Restore Purchases. App is free. Remove any IAP products from this version in App Store Connect.\n\nACCOUNT DELETION: Settings → Account → Delete Account (two-step confirmation). Permanently deletes profile and all local data on device.\n\nSign-in: Public tab — any email; Administrator — admin@psychosocialanalytics.com / admin123\nAdmin panel: Overview, Access, Storage only.\nAI drafts simulated on-device; no PHI to third-party AI.\nNew non-blank screenshots uploaded for iPhone 6.7\" and iPad 13\".\n\nORGANIZATION (5.1.1(ix)): Account Holder is converting developer account to Organization and updating seller/company name to World Class Services (healthcare services provider). See Resolution Center reply."
+      "notes": "Psychosocial Analytics — App Review Notes (v1.0.0, build 5)\n\nSubmission ID: 72a127f7-1a12-443c-964c-b11a5ba400e7\n\nFREE APP — NO IAP OR SUBSCRIPTIONS: All in-app purchases, auto-renewable subscriptions, Apple Pay, and Restore Purchases have been removed. There are no StoreKit products and no payment UI. Please remove any IAP products from this version in App Store Connect.\n\nACCOUNT DELETION: Settings → Account → Delete Account (two-step confirmation).\n\nSign-in: Public tab — any email; Administrator — admin@psychosocialanalytics.com / admin123\nAdmin panel: Overview, Access, Storage only.\nAI drafts simulated on-device; no PHI to third-party AI.\n\nPrivacy Policy: https://www.psychosocialanalytics.com/privacy\nTerms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
     },
     "exportCompliance": {
       "usesEncryption": true,
