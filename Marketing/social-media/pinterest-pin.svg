@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500">
+  <rect width="1000" height="1500" fill="#fffdf8"/>
+  <rect x="55" y="82.5" width="890" height="1335" rx="35" fill="#f7f3e9" stroke="#d7d0c0" stroke-width="4"/>
+  <rect x="100" y="180" width="200" height="26.999999999999996" fill="#b78a2c"/>
+  <text x="100" y="330" font-family="Georgia,serif" font-size="75" fill="#17201b" font-weight="700">Psychosocial Analytics</text>
+  <foreignObject x="100" y="405" width="480" height="375">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font: 32px Arial, sans-serif; color:#5e675f; line-height:1.35">Assessment, report generation, risk visibility, and better case management for social and community workers.</div>
+  </foreignObject>
+  <g transform="translate(640,270)">
+    <rect width="230" height="869.9999999999999" rx="34" fill="#111814"/>
+    <rect x="14" y="37.5" width="202" height="795" rx="28" fill="#fffdf8"/>
+    <rect x="35" y="105.00000000000001" width="160" height="90" rx="15" fill="#087653"/>
+    <rect x="35" y="240" width="160" height="67.5" rx="12" fill="#dfe9de"/>
+    <rect x="35" y="337.5" width="160" height="67.5" rx="12" fill="#dbeaf2"/>
+    <rect x="35" y="434.99999999999994" width="160" height="67.5" rx="12" fill="#efe0d3"/>
+    <path d="M40 675 C85 585, 130 630, 180 510.00000000000006" stroke="#b78a2c" stroke-width="10" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="1260" font-family="Arial,sans-serif" font-size="32" fill="#17201b" font-weight="700">Pinterest Pin campaign creative</text>
+  </svg>

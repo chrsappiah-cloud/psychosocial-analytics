@@ -3,20 +3,8 @@ name: iOS Build
 on:
   push:
     branches: [main]
-    paths:
-      - 'Psychosocial  Analytics/**'
-      - 'Psychosocial  Analytics.xcodeproj/**'
-      - 'Psychosocial  AnalyticsTests/**'
-      - 'Psychosocial  AnalyticsUITests/**'
-      - '.github/workflows/ios.yml'
   pull_request:
     branches: [main]
-    paths:
-      - 'Psychosocial  Analytics/**'
-      - 'Psychosocial  Analytics.xcodeproj/**'
-      - 'Psychosocial  AnalyticsTests/**'
-      - 'Psychosocial  AnalyticsUITests/**'
-      - '.github/workflows/ios.yml'
   workflow_dispatch:
 
 permissions:

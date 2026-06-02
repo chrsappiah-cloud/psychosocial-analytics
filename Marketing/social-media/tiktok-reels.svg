@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <rect width="1080" height="1920" fill="#fffdf8"/>
+  <rect x="59.4" y="105.6" width="961.2" height="1708.8" rx="37.800000000000004" fill="#f7f3e9" stroke="#d7d0c0" stroke-width="4"/>
+  <rect x="108" y="230.39999999999998" width="216" height="34.559999999999995" fill="#b78a2c"/>
+  <text x="108" y="422.4" font-family="Georgia,serif" font-size="81" fill="#17201b" font-weight="700">Psychosocial Analytics</text>
+  <foreignObject x="108" y="518.4000000000001" width="518.4" height="480">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font: 35px Arial, sans-serif; color:#5e675f; line-height:1.35">Assessment, report generation, risk visibility, and better case management for social and community workers.</div>
+  </foreignObject>
+  <g transform="translate(691.2,345.59999999999997)">
+    <rect width="248.4" height="1113.6" rx="34" fill="#111814"/>
+    <rect x="15.120000000000001" y="48" width="218.16000000000003" height="1017.6" rx="28" fill="#fffdf8"/>
+    <rect x="37.800000000000004" y="134.4" width="172.8" height="115.19999999999999" rx="15" fill="#087653"/>
+    <rect x="37.800000000000004" y="307.2" width="172.8" height="86.39999999999999" rx="12" fill="#dfe9de"/>
+    <rect x="37.800000000000004" y="432" width="172.8" height="86.39999999999999" rx="12" fill="#dbeaf2"/>
+    <rect x="37.800000000000004" y="556.8" width="172.8" height="86.39999999999999" rx="12" fill="#efe0d3"/>
+    <path d="M43.2 864 C91.80000000000001 748.8000000000001, 140.4 806.4, 194.4 652.8000000000001" stroke="#b78a2c" stroke-width="10" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="108" y="1612.8" font-family="Arial,sans-serif" font-size="35" fill="#17201b" font-weight="700">TikTok / Reels campaign creative</text>
+  </svg>
