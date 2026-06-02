@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
+  <rect width="1200" height="628" fill="#fffdf8"/>
+  <rect x="66" y="34.54" width="1068" height="558.92" rx="21.98" fill="#f7f3e9" stroke="#d7d0c0" stroke-width="4"/>
+  <rect x="120" y="75.36" width="240" height="11.303999999999998" fill="#b78a2c"/>
+  <text x="120" y="138.16" font-family="Georgia,serif" font-size="47" fill="#17201b" font-weight="700">Psychosocial Analytics</text>
+  <foreignObject x="120" y="169.56" width="576" height="157">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font: 20px Arial, sans-serif; color:#5e675f; line-height:1.35">Assessment, report generation, risk visibility, and better case management for social and community workers.</div>
+  </foreignObject>
+  <g transform="translate(768,113.03999999999999)">
+    <rect width="276" height="364.23999999999995" rx="34" fill="#111814"/>
+    <rect x="16.8" y="15.700000000000001" width="242.4" height="332.84000000000003" rx="28" fill="#fffdf8"/>
+    <rect x="42.00000000000001" y="43.96" width="192" height="37.68" rx="15" fill="#087653"/>
+    <rect x="42.00000000000001" y="100.48" width="192" height="28.259999999999998" rx="12" fill="#dfe9de"/>
+    <rect x="42.00000000000001" y="141.3" width="192" height="28.259999999999998" rx="12" fill="#dbeaf2"/>
+    <rect x="42.00000000000001" y="182.11999999999998" width="192" height="28.259999999999998" rx="12" fill="#efe0d3"/>
+    <path d="M48 282.6 C102.00000000000001 244.92000000000002, 156 263.76, 216 213.52" stroke="#b78a2c" stroke-width="10" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="120" y="527.52" font-family="Arial,sans-serif" font-size="20" fill="#17201b" font-weight="700">Facebook and LinkedIn campaign creative</text>
+  </svg>

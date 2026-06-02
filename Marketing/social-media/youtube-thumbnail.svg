@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#fffdf8"/>
+  <rect x="70.4" y="39.6" width="1139.2" height="640.8" rx="25.200000000000003" fill="#f7f3e9" stroke="#d7d0c0" stroke-width="4"/>
+  <rect x="128" y="86.39999999999999" width="256" height="12.959999999999999" fill="#b78a2c"/>
+  <text x="128" y="158.4" font-family="Georgia,serif" font-size="54" fill="#17201b" font-weight="700">Psychosocial Analytics</text>
+  <foreignObject x="128" y="194.4" width="614.4" height="180">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font: 23px Arial, sans-serif; color:#5e675f; line-height:1.35">Assessment, report generation, risk visibility, and better case management for social and community workers.</div>
+  </foreignObject>
+  <g transform="translate(819.2,129.6)">
+    <rect width="294.40000000000003" height="417.59999999999997" rx="34" fill="#111814"/>
+    <rect x="17.92" y="18" width="258.56" height="381.6" rx="28" fill="#fffdf8"/>
+    <rect x="44.800000000000004" y="50.400000000000006" width="204.8" height="43.199999999999996" rx="15" fill="#087653"/>
+    <rect x="44.800000000000004" y="115.2" width="204.8" height="32.4" rx="12" fill="#dfe9de"/>
+    <rect x="44.800000000000004" y="162" width="204.8" height="32.4" rx="12" fill="#dbeaf2"/>
+    <rect x="44.800000000000004" y="208.79999999999998" width="204.8" height="32.4" rx="12" fill="#efe0d3"/>
+    <path d="M51.2 324 C108.80000000000001 280.8, 166.4 302.4, 230.39999999999998 244.8" stroke="#b78a2c" stroke-width="10" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="128" y="604.8" font-family="Arial,sans-serif" font-size="23" fill="#17201b" font-weight="700">YouTube Thumbnail campaign creative</text>
+  </svg>
